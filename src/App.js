@@ -1,9 +1,8 @@
-import logo from './logo.svg';
+
 import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
-import './App.css';
 import { Button } from 'primereact/button';
 
-import "primereact/resources/themes/lara-light-cyan/theme.css";
+import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 
 
 function App() {

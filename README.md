@@ -1,3 +1,7 @@
+red = #9b3036
+blue = #00275B
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

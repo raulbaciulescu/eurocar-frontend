@@ -3,12 +3,15 @@ import {Button} from 'primereact/button';
 
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import Header from "./Header";
-import {Route, BrowserRouter as Router, Routes} from "react-router-dom";
+import {Route, BrowserRouter as Router, Routes, BrowserRouter} from "react-router-dom";
 import {Home} from "./Home";
 import {Test} from "./Test";
 import CarCard from "./CarCard";
 import carPath from "./car1.PNG"
 import {Footer} from "./Footer";
+import CarRentalPage from "./CarRentalPage";
+import MyComponent from "./MyComponent";
+import ImageComponent from "./ImageComponent";
 
 
 const car = {
@@ -26,15 +29,24 @@ const car = {
 
 function App() {
     return (
-        <Router>
-            <div className="min-h-screen">
-                <Header/>
-                <Home/>
-                {/*<Test/>*/}
-                {/*<CarCard car={car} days={8}/>*/}
-                <Footer/>
-            </div>
-        </Router>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={
+                    <div className="min-h-screen">
+                        <Header/>
+                        <Home/>
+                        <Footer/>
+                    </div>
+                }/>
+                <Route path="/ok" element={
+                    <div className="min-h-screen">
+                        <Header/>
+                        <CarRentalPage/>
+                        <Footer/>
+                    </div>
+                }/>
+            </Routes>
+        </BrowserRouter>
     );
 }
 

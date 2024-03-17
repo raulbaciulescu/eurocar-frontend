@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import logo from "./logo1.svg"
-import { Button } from 'primereact/button';
+import {Button} from 'primereact/button';
+import {Link} from "react-router-dom";
 
 export default function Header() {
     const [navbarCollapse, setNavbarCollapse] = useState(false);
@@ -53,12 +54,16 @@ export default function Header() {
             {/*</div>*/}
             <header className="bg-[#121328] text-white p-4 flex justify-between items-center">
                 <div className="flex items-center">
-                    <img src={logo} alt='logo' className="h-12 mr-4"  />
+                    <Link to="/" className="inline-block">
+                        <img src={logo} alt='logo' className="h-12 mr-4"/>
+                    </Link>
                     <h1 className="text-xl font-bold">Eurocar GMN</h1>
                 </div>
                 <div className="flex items-center">
-                    <Button label="Contact" text style={{ color: 'white' }}></Button>
-                    <Button label="About" style={{ color: 'white' }} text></Button>
+                    <Link to="/ok" className="inline-block">
+                    <Button label="Contact" text style={{color: 'white'}}></Button>
+                    </Link>
+                    <Button label="About" style={{color: 'white'}} text></Button>
                 </div>
             </header>
         </>

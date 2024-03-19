@@ -63,7 +63,9 @@ export default function Header() {
                     <Link to="/ok" className="inline-block">
                     <Button label="Contact" text style={{color: 'white'}}></Button>
                     </Link>
+                    <Link to="/about" className="inline-block">
                     <Button label="About" style={{color: 'white'}} text></Button>
+                    </Link>
                 </div>
             </header>
         </>

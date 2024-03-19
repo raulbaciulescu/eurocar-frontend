@@ -7,7 +7,7 @@ import {Dropdown} from 'primereact/dropdown';
 import image1 from "./images/ss-removebg-preview.png"
 import image2 from "./images/ss2-removebg-preview.png"
 
-export const CarPage = () => {
+export const CarSection = () => {
     return (
         <>
             {/*<div className="w-full h-auto bg-no-repeat bg-cover bg-left bg-fixed bg-myblue py-32">*/}
@@ -35,10 +35,10 @@ export const CarPage = () => {
             {/*    </div>*/}
             {/*</div>*/}
 
-            <div className="w-full h-auto bg-no-repeat bg-cover bg-left bg-fixed bg-myblue py-32">
+            <div className="w-full h-dvh bg-myblue py-32">
                 <div className="flex flex-col items-center p-6">
-                    <div className="flex relative w-2/5 h-40 bg-white p-6 mb-20 rounded-full">
-                        <div className="w-1/2"></div>
+                    <div className="flex relative bg-white w-2/5 h-40 p-6 mb-20 rounded-full">
+                        <div className="w-1/2 "></div>
                         <img src={image1} alt="" className="absolute left-2.5 bottom-1" width="330px"/>
                         <div className="flex w-1/2  items-center justify-center">
                             <h1 className="text-2xl">300 Lei</h1>

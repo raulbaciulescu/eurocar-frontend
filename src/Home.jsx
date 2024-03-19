@@ -22,8 +22,8 @@ export const Home = () => {
 
     return (
         <>
-            <div className="w-full min-h-screen bg-no-repeat bg-cover bg-left bg-fixed bg-[url('./bg3.PNG')] pt-32">
-                <div className="max-w-md bg-[#121328] bg-opacity-60 rounded-lg overflow-hidden shadow-2xl p-6 sm:ml-8 md:ml-16 lg:ml-24 xl:ml-28">
+            <div className="w-full h-full bg-no-repeat bg-cover bg-left bg-fixed bg-[url('./bg3.PNG')] pt-20">
+                <div className="max-w-lg bg-[#121328] bg-opacity-60 rounded-lg overflow-hidden shadow-2xl p-6 sm:ml-8 md:ml-16 lg:ml-24 xl:ml-40">
                     <div className="flex items-center justify-center">
                         <h1 className="font-bold text-2xl text-white">Închirieaza o mașină</h1>
                     </div>

@@ -18,25 +18,25 @@ const CarRentalForm = () => {
     return (
         <>
             <div className="flex flex-col items-center justify-center">
-                <div className="flex flex-col w-64">
+                <div className="flex flex-col w-60">
                     <label htmlFor="username" className="block my-2">Nume</label>
                     <InputText id="username" aria-describedby="username-help"/>
                 </div>
 
-                <div className="flex flex-col w-64">
+                <div className="flex flex-col w-60">
                     <label htmlFor="username" className="block my-2">Prenume</label>
                     <InputText id="username" aria-describedby="username-help"/>
                 </div>
-                <div className="flex flex-col w-64">
+                <div className="flex flex-col w-60">
                     <label htmlFor="username" className="block my-2">Email</label>
                     <InputText id="username" aria-describedby="username-help"/>
                 </div>
-                <div className="flex flex-col w-64">
+                <div className="flex flex-col w-60">
                     <label htmlFor="username" className="block my-2">Număr telefon</label>
                     <InputText id="username" aria-describedby="username-help"/>
                 </div>
 
-                <div className="flex flex-col w-64">
+                <div className="flex flex-col w-60">
                     <label htmlFor="pickupdate" className="my-2">
                         Dată preluare
                     </label>
@@ -49,7 +49,7 @@ const CarRentalForm = () => {
                               }}
                     />
                 </div>
-                <div className="flex flex-col w-64">
+                <div className="flex flex-col w-60">
                     <label htmlFor="pickupdate" className="my-2">
                         Dată preluare
                     </label>
@@ -63,7 +63,7 @@ const CarRentalForm = () => {
                     />
                 </div>
 
-                <div className="flex flex-col w-64">
+                <div className="flex flex-col w-60">
                     <label htmlFor="buttondisplay" className="block mb-2">
                         Oră preluare
                     </label>
@@ -75,7 +75,7 @@ const CarRentalForm = () => {
                                   }
                               }}/>
                 </div>
-                <div className="flex flex-col w-64">
+                <div className="flex flex-col w-60">
                     <label htmlFor="buttondisplay" className="block mb-2">
                         Oră preluare
                     </label>

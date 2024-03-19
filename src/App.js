@@ -12,7 +12,8 @@ import {Footer} from "./Footer";
 import CarRentalPage from "./CarRentalPage";
 import MyComponent from "./MyComponent";
 import ImageComponent from "./ImageComponent";
-import {CarPage} from "./CarPage";
+import {CarSection} from "./CarSection";
+import {CarWithPricePage} from "./CarWithPricePage";
 
 
 const car = {
@@ -33,17 +34,26 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={
-                    <div className="min-h-screen">
-                        <Header/>
-                        <Home/>
-                        <CarPage/>
+                    <>
+                        <div className="h-dvh">
+                            <Header/>
+                            <Home/>
+                        </div>
+                        <CarSection/>
                         <Footer/>
-                    </div>
+                    </>
                 }/>
                 <Route path="/ok" element={
-                    <div className="min-h-screen">
+                    <>
                         <Header/>
                         <CarRentalPage/>
+                        <Footer/>
+                    </>
+                }/>
+                <Route path="/about" element={
+                    <div className="min-h-screen">
+                        <Header/>
+                        <CarWithPricePage/>
                         <Footer/>
                     </div>
                 }/>

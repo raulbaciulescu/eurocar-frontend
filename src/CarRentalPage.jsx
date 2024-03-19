@@ -5,19 +5,19 @@ import CarRentalForm from "./CarRentalForm";
 const CarRentalPage = () => {
     return (
         <div className="flex items-center">
-            <div className="lg:h-screen w-full items-center flex flex-col">
-                <div className="w-2/4 flex h-16 items-center">
+            <div className="w-full items-center flex flex-col">
+                <div className="w-2/4 flex h-16 items-center py-6">
                     <h1 className="text-2xl pl-10">Opel Astra</h1>
                 </div>
-                <div className="h-min-screen w-2/4 flex">
+                <div className="w-3/5 flex">
                     <div className="flex w-full flex-wrap justify-center">
                         <div className="lg:basis-1/3">
                             <ImageComponent/>
                         </div>
                         <div className="basis-2/3">
                             <div className="flex flex-wrap justify-center">
-                                <div className="basis-1/4 border-y-green-600 lg:order-2 md:order-1 sm:order-1">
-                                    <table className="w-full text-center my-6">
+                                <div className="basis-2/4 lg:order-2">
+                                    <table className="w-auto text-center my-6">
                                         <thead>
                                         <tr className="bg-gray-200">
                                             <th className="px-4 py-2">Durata</th>
@@ -44,7 +44,7 @@ const CarRentalPage = () => {
                                         </tbody>
                                     </table>
                                 </div>
-                                <div className="basis-3/4 mb-6 lg:order-1 md:order-2 sm:order-2">
+                                <div className="basis-2/4 mb-6 lg:order-1">
                                     <CarRentalForm/>
                                 </div>
                             </div>

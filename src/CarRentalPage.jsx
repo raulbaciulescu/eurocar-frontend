@@ -1,30 +1,23 @@
 import React from 'react';
-import logo from "./logo1.svg"
 import ImageComponent from "./ImageComponent";
 import CarRentalForm from "./CarRentalForm";
-import {InputText} from "primereact/inputtext";
-import {Button} from "primereact/button";
-import {Calendar} from "primereact/calendar";
 
 const CarRentalPage = () => {
     return (
-        <div className="flex items-center justify-center">
-            <div className="h-screen w-full items-center flex flex-col">
-                <div className="w-2/3 flex h-16 items-center">
+        <div className="flex items-center">
+            <div className="lg:h-screen w-full items-center flex flex-col">
+                <div className="w-2/4 flex h-16 items-center">
                     <h1 className="text-2xl pl-10">Opel Astra</h1>
                 </div>
-                <div className="w-2/3 flex">
-                    <div className="flex w-full">
-                        <div className="basis-1/3">
+                <div className="h-min-screen w-2/4 flex">
+                    <div className="flex w-full flex-wrap justify-center">
+                        <div className="lg:basis-1/3">
                             <ImageComponent/>
                         </div>
                         <div className="basis-2/3">
-                            <div className="flex w-full">
-                                <div className="basis-3/4 items-center justify-center">
-                                    <CarRentalForm/>
-                                </div>
-                                <div className="basis-1/4 border-y-green-600">
-                                    <table className="w-full text-center">
+                            <div className="flex flex-wrap justify-center">
+                                <div className="basis-1/4 border-y-green-600 lg:order-2 md:order-1 sm:order-1">
+                                    <table className="w-full text-center my-6">
                                         <thead>
                                         <tr className="bg-gray-200">
                                             <th className="px-4 py-2">Durata</th>
@@ -50,6 +43,9 @@ const CarRentalPage = () => {
                                         </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div className="basis-3/4 mb-6 lg:order-1 md:order-2 sm:order-2">
+                                    <CarRentalForm/>
                                 </div>
                             </div>
                         </div>

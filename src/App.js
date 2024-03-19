@@ -12,6 +12,7 @@ import {Footer} from "./Footer";
 import CarRentalPage from "./CarRentalPage";
 import MyComponent from "./MyComponent";
 import ImageComponent from "./ImageComponent";
+import {CarPage} from "./CarPage";
 
 
 const car = {
@@ -35,6 +36,7 @@ function App() {
                     <div className="min-h-screen">
                         <Header/>
                         <Home/>
+                        <CarPage/>
                         <Footer/>
                     </div>
                 }/>

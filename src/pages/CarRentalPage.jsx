@@ -1,13 +1,19 @@
-import React from 'react';
-import ImageComponent from "./ImageComponent";
-import CarRentalForm from "./CarRentalForm";
+import React, {useContext} from 'react';
+import ImageComponent from "../ImageComponent";
+import CarRentalForm from "../CarRentalForm";
+import {AppContext} from "../App";
+import {useParams} from "react-router-dom";
 
 const CarRentalPage = () => {
+    const { selectedCar } = useParams();
+
     return (
         <div className="flex items-center">
             <div className="w-full items-center flex flex-col">
-                <div className="w-2/4 flex h-16 items-center py-6">
-                    <h1 className="text-2xl pl-10">Opel Astra</h1>
+                <div className="w-3/5 flex h-16 items-center py-6">
+                    <h1 className="text-2xl pl-10">
+                        {selectedCar}
+                    </h1>
                 </div>
                 <div className="w-3/5 flex">
                     <div className="flex w-full flex-wrap justify-center">

@@ -1,54 +1,52 @@
-import React, {useState} from "react"
+import React, {useContext, useState} from "react"
 import {Calendar} from "primereact/calendar";
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import {Button} from "primereact/button";
 import {Dropdown} from 'primereact/dropdown';
-import image1 from "./images/ss-removebg-preview.png"
-import image2 from "./images/ss2-removebg-preview.png"
+// import image1 from "./images/ss-removebg-preview.png"
+// import image2 from "./images/ss2-removebg-preview.png"
+import {Link} from "react-router-dom";
+import {Navigate} from 'react-router-dom';
+import {AppContext} from "./App"; // sau orice alt mod de gestionare a rutării
 
 export const CarSection = () => {
+    const {selectedCar, setSelectedCar} = useContext(AppContext);
+
+    const rentCar = (selected) => {
+        setSelectedCar(selected);
+        console.log(selected)
+        return <Navigate to="/rent"/>;
+    }
+
     return (
         <>
-            {/*<div className="w-full h-auto bg-no-repeat bg-cover bg-left bg-fixed bg-myblue py-32">*/}
-            {/*    <div className="flex flex-col items-center p-6">*/}
-            {/*        <div className="flex relative w-2/5 h-40 bg-white p-6 mb-20 rounded-full">*/}
-            {/*            <div className="w-1/2">*/}
-            {/*                <img src={image1} alt="" className="absolute left-2.5 bottom-1" width="330px"/>*/}
-            {/*            </div>*/}
-            {/*            <div className="flex w-1/2  items-center justify-center">*/}
-            {/*                <h1 className="text-2xl">TEXT</h1>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-            {/*<div className="w-full h-auto bg-no-repeat bg-cover bg-left bg-fixed bg-myblue py-32">*/}
-            {/*    <div className="flex flex-col items-center p-6">*/}
-            {/*        <div className="w-full md:w-2/5 bg-white p-6 mb-20 rounded-full relative">*/}
-            {/*            <div className="flex justify-center items-center">*/}
-            {/*                <img src={image1} alt="" className="w-1/2 md:absolute md:left-0 md-bottom-0" />*/}
-            {/*                <div className="flex flex-col justify-center items-center md:w-1/2">*/}
-            {/*                    <h1 className="text-2xl">TEXT</h1>*/}
-            {/*                </div>*/}
-            {/*            </div>*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
-
-            <div className="w-full h-dvh bg-myblue py-32">
+            <div className="w-full h-2/5 bg-myblue pt-20">
                 <div className="flex flex-col items-center p-6">
                     <div className="flex relative bg-white w-2/5 h-40 p-6 mb-20 rounded-full">
                         <div className="w-1/2 "></div>
-                        <img src={image1} alt="" className="absolute left-2.5 bottom-1" width="330px"/>
+                        <img src="/images/ss2-removebg-preview.png" alt="" className="absolute left-2.5 bottom-1"
+                             width="300px"/>
                         <div className="flex w-1/2  items-center justify-center">
-                            <h1 className="text-2xl">300 Lei</h1>
+                            <h1 className="text-2xl">
+                                OPEL VIVARO 1.6
+                            </h1>
+                            <Link reloadDocument to={"rent/car1"}>
+                                <Button text>Închiriază</Button>
+                            </Link>
                         </div>
                     </div>
                     <div className="flex relative w-2/5 h-40 bg-white p-6 mb-20 rounded-full">
                         <div className="w-1/2"></div>
-                        <img src={image2} alt="" className="absolute left-2.5 bottom-1" width="330px"/>
+                        <img src="/images/ss-removebg-preview.png" alt="" className="absolute left-2.5 bottom-1"
+                             width="300px"/>
                         <div className="flex w-1/2  items-center justify-center">
-                            <h1 className="text-2xl">TEXT</h1>
+                            <h1 className="text-2xl">
+                                OPEL VIVARO 1.6
+                            </h1>
+                            <Link reloadDocument to={"rent/car2"}>
+                                <Button text>Închiriază</Button>
+                            </Link>
                         </div>
                     </div>
                 </div>

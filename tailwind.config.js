@@ -8,6 +8,9 @@ module.exports = {
       colors: {
         'myblue': '#00275B',
       },
+      backgroundImage: {
+        'mybg': "url('D:\\Projects\\eurocar-frontend\\public\\images\\bg3.PNG')",
+      }
     },
   },
   plugins: [],

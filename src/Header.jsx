@@ -61,10 +61,10 @@ export default function Header() {
                 </div>
                 <div className="flex items-center">
                     <Link to="/ok" className="inline-block">
-                    <Button label="Contact" text style={{color: 'white'}}></Button>
+                    <Button label="Contact" style={{color: 'white'}} text/>
                     </Link>
                     <Link to="/about" className="inline-block">
-                    <Button label="About" style={{color: 'white'}} text></Button>
+                    <Button label="About" style={{color: 'white'}} text/>
                     </Link>
                 </div>
             </header>

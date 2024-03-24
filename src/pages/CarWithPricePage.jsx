@@ -2,13 +2,8 @@ import React, {useState} from "react"
 import {Calendar} from "primereact/calendar";
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
-import {Button} from "primereact/button";
-import {Dropdown} from 'primereact/dropdown';
-import image1 from "./images/ss-removebg-preview.png"
-import image2 from "./images/ss2-removebg-preview.png"
-import ImageComponent from "./ImageComponent";
-import CarRentalForm from "./CarRentalForm";
-import {CarCard2} from "./CarCard2";
+
+import {CarCard2} from "../CarCard2";
 
 export const CarWithPricePage = () => {
     return (

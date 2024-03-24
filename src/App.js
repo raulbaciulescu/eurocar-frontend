@@ -1,64 +1,44 @@
-import {PrimeReactProvider, PrimeReactContext} from 'primereact/api';
-import {Button} from 'primereact/button';
-
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import Header from "./Header";
-import {Route, BrowserRouter as Router, Routes, BrowserRouter} from "react-router-dom";
-import {Home} from "./Home";
-import {Test} from "./Test";
-import CarCard from "./CarCard";
-import carPath from "./car1.PNG"
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {MainPage} from "./pages/MainPage";
 import {Footer} from "./Footer";
-import CarRentalPage from "./CarRentalPage";
-import MyComponent from "./MyComponent";
-import ImageComponent from "./ImageComponent";
-import {CarSection} from "./CarSection";
-import {CarWithPricePage} from "./CarWithPricePage";
+import CarRentalPage from "./pages/CarRentalPage";
+import {CarWithPricePage} from "./pages/CarWithPricePage";
+import {createContext, useState} from "react";
 
-
-const car = {
-    name: 'Toyota Aygo',
-    image: carPath,
-    fuelType: 'Benzină',
-    transmission: 'M',
-    price: '77.60',
-    included: {
-        cdwRca: 'Reduced Guarantee (MDMR)',
-        vatDelivery: 'Vignette included',
-        additionalDriver: 'Additional driver included for free',
-    },
-};
+export const AppContext = createContext(null);
 
 function App() {
+    const [selectedCar, setSelectedCar] = useState(null);
+
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={
-                    <>
-                        <div className="h-dvh">
+        <AppContext.Provider value={{}}>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={
+                        <>
+                            <MainPage/>
+                            <Footer/>
+                        </>
+                    }/>
+                    <Route path={`/rent/:selectedCar`} element={
+                        <>
                             <Header/>
-                            <Home/>
+                            <CarRentalPage/>
+                            <Footer/>
+                        </>
+                    }/>
+                    <Route path="/about" element={
+                        <div className="min-h-screen">
+                            <Header/>
+                            <CarWithPricePage/>
+                            <Footer/>
                         </div>
-                        <CarSection/>
-                        <Footer/>
-                    </>
-                }/>
-                <Route path="/ok" element={
-                    <>
-                        <Header/>
-                        <CarRentalPage/>
-                        <Footer/>
-                    </>
-                }/>
-                <Route path="/about" element={
-                    <div className="min-h-screen">
-                        <Header/>
-                        <CarWithPricePage/>
-                        <Footer/>
-                    </div>
-                }/>
-            </Routes>
-        </BrowserRouter>
+                    }/>
+                </Routes>
+            </BrowserRouter>
+        </AppContext.Provider>
     );
 }
 

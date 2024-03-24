@@ -1,37 +1,59 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
-import logo from "./logo-gray.svg"
-// import image1 from "./images/IMG-20240309-WA0000.jpg"
-// import image2 from "./images/IMG-20240309-WA0007.jpg"
+import React, {useEffect, useRef, useState} from 'react';
 import {Image} from 'primereact/image';
 import {Galleria} from "primereact/galleria";
-import {AppContext} from "./App";
+import {useParams} from "react-router-dom";
 
 
 export const PhotoService = {
-    getData() {
+    getData(selectedCar) {
         return [
             {
-                itemImageSrc: './images/IMG-20240309-WA0008.jpg',
-                thumbnailImageSrc: './images/IMG-20240309-WA0008.jpg',
-                alt: 'Description for Image 1',
+                itemImageSrc: `/images/${selectedCar}/1.jpg`,
+                thumbnailImageSrc: `/images/${selectedCar}/1.jpg`,
+                alt: 'Image',
+            },
+            {
+                itemImageSrc: `/images/${selectedCar}/2.jpg`,
+                thumbnailImageSrc: `/images/${selectedCar}/2.jpg`,
+                alt: 'Image',
+            },
+            {
+                itemImageSrc: `/images/${selectedCar}/3.jpg`,
+                thumbnailImageSrc: `/images/${selectedCar}/3.jpg`,
+                alt: 'Image',
+            },
+            {
+                itemImageSrc: `/images/${selectedCar}/4.jpg`,
+                thumbnailImageSrc: `/images/${selectedCar}/4.jpg`,
+                alt: 'Image',
+            },
+            {
+                itemImageSrc: `/images/${selectedCar}/5.jpg`,
+                thumbnailImageSrc: `/images/${selectedCar}/5.jpg`,
+                alt: 'Image',
+            },
+            {
+                itemImageSrc: `/images/${selectedCar}/6.jpg`,
+                thumbnailImageSrc: `/images/${selectedCar}/6.jpg`,
+                alt: 'Image',
             },
         ];
     },
 
-    getImages() {
-        return Promise.resolve(this.getData());
+    getImages(selectedCar) {
+        return Promise.resolve(this.getData(selectedCar));
     }
 };
 
 
 const ImageComponent = () => {
-    const {selectedCar} = useContext(AppContext);
+    const { selectedCar } = useParams();
     const [images, setImages] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const galleria = useRef(null);
 
     useEffect(() => {
-        PhotoService.getImages().then(data => setImages(data));
+        PhotoService.getImages(selectedCar).then(data => setImages(data));
     }, []);
 
     const itemTemplate = (item) => {
@@ -39,13 +61,13 @@ const ImageComponent = () => {
     }
 
     const thumbnailTemplate = (item) => {
-        return <img src={item.thumbnailImageSrc} alt={item.alt} style={{display: 'block'}}/>;
+        return <img src={item.thumbnailImageSrc} alt={item.alt}/>;
     }
 
     return (
         <div className="card flex flex-col justify-content-center">
             <div className="max-w-4xl pb-6">
-                <Image src="/images/better.PNG" zoomInIcon alt="Image" width="250" height="250" preview/>
+                <Image src={`/images/${selectedCar}/main.PNG`} zoomInIcon alt="Image" width="250" height="250" preview/>
             </div>
             <Galleria ref={galleria} value={images} numVisible={7} style={{maxWidth: '850px'}}
                       activeIndex={activeIndex} onItemChange={(e) => setActiveIndex(e.index)}
@@ -54,7 +76,7 @@ const ImageComponent = () => {
             <div className="grid grid-rows-4 grid-flow-col gap-4" style={{maxWidth: '300px'}}>
                 {
                     images && images.map((image, index) => {
-                        let imgEl = <img src={image.thumbnailImageSrc} alt={image.alt} style={{cursor: 'pointer'}} onClick={
+                        let imgEl = <img src={image.thumbnailImageSrc} alt={image.alt} style={{cursor: 'pointer', width: 100, height: 100, "object-fit": "contain"}} onClick={
                             () => {
                                 setActiveIndex(index);
                                 galleria.current.show()

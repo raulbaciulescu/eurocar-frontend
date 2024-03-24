@@ -1,24 +1,13 @@
-import React, {useContext, useState} from "react"
-import {Calendar} from "primereact/calendar";
+import React, {useContext} from "react"
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import {Button} from "primereact/button";
-import {Dropdown} from 'primereact/dropdown';
 // import image1 from "./images/ss-removebg-preview.png"
 // import image2 from "./images/ss2-removebg-preview.png"
 import {Link} from "react-router-dom";
-import {Navigate} from 'react-router-dom';
 import {AppContext} from "./App"; // sau orice alt mod de gestionare a rutării
 
 export const CarSection = () => {
-    const {selectedCar, setSelectedCar} = useContext(AppContext);
-
-    const rentCar = (selected) => {
-        setSelectedCar(selected);
-        console.log(selected)
-        return <Navigate to="/rent"/>;
-    }
-
     return (
         <>
             <div className="w-full h-2/5 bg-myblue pt-20">

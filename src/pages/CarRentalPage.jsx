@@ -12,7 +12,7 @@ const CarRentalPage = () => {
             <div className="w-full items-center flex flex-col">
                 <div className="w-3/5 flex h-16 items-center py-6">
                     <h1 className="text-2xl pl-10">
-                        {selectedCar}
+                        OPEL VIVARO 1.6
                     </h1>
                 </div>
                 <div className="w-3/5 flex">

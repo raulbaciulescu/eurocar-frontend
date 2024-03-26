@@ -1,15 +1,16 @@
-import React, {useContext, useState} from 'react';
-import logo from "./logo1.svg"
-import ImageComponent from "./ImageComponent";
+import React, {useContext, useRef, useState} from 'react';
 import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
 import {Calendar} from "primereact/calendar";
-import {calendarProps, calendarPropsWhiteBg, cities} from "./constants";
+import {calendarPropsWhiteBg, cities} from "./constants";
 import {AppContext} from "./appProvider";
 import {Dropdown} from "primereact/dropdown";
 import {eurocarService} from "./services/eurocarService";
+import {Toast} from 'primereact/toast';
+
 
 const CarRentalForm = () => {
+    const toast = useRef(null);
     const {pickupDate, updatePickupDate} = useContext(AppContext);
     const {dropOffDate, updateDropOffDate} = useContext(AppContext);
     const {pickupHour, updatePickupHour} = useContext(AppContext);
@@ -23,29 +24,51 @@ const CarRentalForm = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
 
     const onRentButtonClick = () => {
-        let pickHourTemp = pickupHour.getHours() + "." + pickupHour.getMinutes()
-        let dropHourTemp = dropoffHour.getHours() + "." + dropoffHour.getMinutes()
+        // if (validateInputs()) {
+            let pickHourTemp = pickupHour.getHours() + "." + pickupHour.getMinutes()
+            let dropHourTemp = dropoffHour.getHours() + "." + dropoffHour.getMinutes()
 
-        let rentObj = {
-            "firstname": firstname,
-            "lastname": lastname,
-            "email": email,
-            "phoneNumber": phoneNumber,
-            "pickupDate": pickupDate.toLocaleDateString("ro-RO"),
-            "dropOffDate": dropOffDate.toLocaleDateString("ro-RO"),
-            "pickupHour": pickHourTemp,
-            "dropoffHour": dropHourTemp,
-            "pickupCity": pickupCity.name,
-            "dropoffCity": dropoffCity.name,
-        }
+            let rentObj = {
+                "firstname": firstname,
+                "lastname": lastname,
+                "email": email,
+                "phoneNumber": phoneNumber,
+                "pickupDate": pickupDate.toLocaleDateString("ro-RO"),
+                "dropoffDate": dropOffDate.toLocaleDateString("ro-RO"),
+                "pickupHour": pickHourTemp,
+                "dropoffHour": dropHourTemp,
+                "pickupCity": pickupCity.name,
+                "dropoffCity": dropoffCity.name,
+            }
 
-        eurocarService
-            .rent(rentObj)
-            .then(r => {})
+            eurocarService
+                .rent(rentObj)
+                .then(r => {
+                    toast.current.show({
+                        severity: 'info',
+                        summary: 'Info',
+                        detail: 'Rezervarea a fost realizată!'
+                    });
+                })
+        // } else
+        //     toast.current.show({
+        //         severity: 'warn',
+        //         summary: 'Warning',
+        //         detail: 'Trebuie completate toate câmpurile pentru rezervare!',
+        //         life: 3000
+        //     });
+    }
+
+    const validateInputs = () => {
+        return !(pickupDate == null || dropOffDate == null ||
+            pickupHour == null || dropoffHour == null || pickupCity == null || dropoffCity === null || firstname === "" || lastname === "" ||
+            email === "" || phoneNumber === ""
+        );
     }
 
     return (
         <>
+            <Toast ref={toast}/>
             <div className="flex flex-col items-center justify-center">
                 <div className="flex flex-col w-60">
                     <label htmlFor="username" className="block my-2">Nume</label>

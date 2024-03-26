@@ -4,13 +4,10 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {MainPage} from "./pages/MainPage";
 import {Footer} from "./Footer";
 import CarRentalPage from "./pages/CarRentalPage";
-import {CarWithPricePage} from "./pages/CarWithPricePage";
 import {AppProvider} from "./appProvider";
 
 
 function App() {
-
-
     return (
        <AppProvider>
            <BrowserRouter>
@@ -31,7 +28,7 @@ function App() {
                    <Route path="/about" element={
                        <div className="min-h-screen">
                            <Header/>
-                           <CarWithPricePage/>
+                           {/*<CarWithPricePage/>*/}
                            <Footer/>
                        </div>
                    }/>

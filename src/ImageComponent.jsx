@@ -69,14 +69,14 @@ const ImageComponent = () => {
             <div className="max-w-4xl pb-6">
                 <Image src={`/images/${selectedCar}/main.PNG`} zoomInIcon alt="Image" width="250" height="250" preview/>
             </div>
-            <Galleria ref={galleria} value={images} numVisible={7} style={{maxWidth: '850px'}}
+            <Galleria ref={galleria} value={images} numVisible={7} style={{maxWidth: '800px'}}
                       activeIndex={activeIndex} onItemChange={(e) => setActiveIndex(e.index)}
                       circular fullScreen showItemNavigators showThumbnails={false} item={itemTemplate}
                       thumbnail={thumbnailTemplate}/>
             <div className="grid grid-rows-4 grid-flow-col gap-4" style={{maxWidth: '300px'}}>
                 {
                     images && images.map((image, index) => {
-                        let imgEl = <img src={image.thumbnailImageSrc} alt={image.alt} style={{cursor: 'pointer', width: 100, height: 100, "object-fit": "contain"}} onClick={
+                        let imgEl = <img src={image.thumbnailImageSrc} alt={image.alt} style={{cursor: 'pointer', width: 70, height: 70, "object-fit": "cover"}} onClick={
                             () => {
                                 setActiveIndex(index);
                                 galleria.current.show()

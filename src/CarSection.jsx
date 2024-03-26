@@ -1,11 +1,8 @@
-import React, {useContext} from "react"
+import React from "react"
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import {Button} from "primereact/button";
-// import image1 from "./images/ss-removebg-preview.png"
-// import image2 from "./images/ss2-removebg-preview.png"
 import {Link} from "react-router-dom";
-import {AppContext} from "./App"; // sau orice alt mod de gestionare a rutării
 
 export const CarSection = ({computedPrice}) => {
     return (
@@ -17,7 +14,7 @@ export const CarSection = ({computedPrice}) => {
                         <img src="/images/ss2-removebg-preview.png" alt="" className="absolute left-2.5 bottom-1"
                              width="300px"/>
                         <div className="flex w-1/2  items-center justify-center">
-                            <h1 className="text-2xl">
+                            <h1 className="text-2xl mr-4">
                                 OPEL VIVARO 1.6
                             </h1>
                             <h1 className="text-2xl">
@@ -27,8 +24,8 @@ export const CarSection = ({computedPrice}) => {
                                      ""
                                 }
                             </h1>
-                            <Link reloadDocument to={"rent/car1"}>
-                                <Button text>Închiriază</Button>
+                            <Link to={"rent/car1"}>
+                                <Button text className="text-myblue" label="Închiriază"></Button>
                             </Link>
                         </div>
                     </div>
@@ -37,7 +34,7 @@ export const CarSection = ({computedPrice}) => {
                         <img src="/images/ss-removebg-preview.png" alt="" className="absolute left-2.5 bottom-1"
                              width="300px"/>
                         <div className="flex w-1/2  items-center justify-center">
-                            <h1 className="text-2xl">
+                            <h1 className="text-2xl mr-4">
                                 OPEL VIVARO 1.6
                             </h1>
                             <h1 className="text-2xl">
@@ -48,7 +45,7 @@ export const CarSection = ({computedPrice}) => {
                                 }
                             </h1>
                             <Link to={"rent/car2"}>
-                                <Button text>Închiriază</Button>
+                                <Button text className="text-myblue" label="Închiriază"></Button>
                             </Link>
                         </div>
                     </div>

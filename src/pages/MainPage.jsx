@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react"
+import React, {useContext, useRef, useState} from "react"
 import {Calendar} from "primereact/calendar";
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
@@ -7,57 +7,48 @@ import {Dropdown} from 'primereact/dropdown';
 import {eurocarService} from "../services/eurocarService";
 import {CarSection} from "../CarSection";
 import Header from "../Header";
+import {calendarProps, cities} from "../constants";
+import {AppContext} from "../appProvider";
 
 export const MainPage = () => {
-    const [pickupDate, setPickupDate] = useState();
-    const [dropOffDate, setDropOffDate] = useState(null);
-    const [pickupHour, setPickupHour] = useState(null);
-    const [dropoffHour, setDropoffHour] = useState(null);
-    const [pickupCity, setPickupCity] = useState(null);
-    const [dropoffCity, setDropoffCity] = useState(null);
-
-    const cities = [
-        {name: 'Târgu Mureș'},
-        {name: 'Cluj-Napoca'},
-        {name: 'Sighișoara'},
-        {name: 'Brașov'},
-    ];
-    let calendarProps = {
-        input: {
-            root: {className: 'border-myblue'}
-        },
-        dropdownButton: {
-            root: {className: 'bg-myblue border-myblue'}
-        }
-    }
     const commentSectionRef = useRef(null);
+    const [computedPrice, setComputedPrice] = useState(0);
+    const {pickupDate, updatePickupDate} = useContext(AppContext);
+    const {dropOffDate, updateDropOffDate} = useContext(AppContext);
+    const {pickupHour, updatePickupHour} = useContext(AppContext);
+    const {dropoffHour, updateDropOffHour} = useContext(AppContext);
+    const {pickupCity, updatePickupCity} = useContext(AppContext);
+    const {dropoffCity, updateDropoffCity} = useContext(AppContext);
 
     const getPrice = () => {
-        // if (validateInputs()) {
-        //     let pickHour = pickupHour.getHours() + "." + pickupHour.getMinutes()
-        //     let dropHour = dropoffHour.getHours() + "." + dropoffHour.getMinutes()
-        //     eurocarService.getPrice(
-        //         pickupDate.toLocaleDateString("ro-RO"),
-        //         dropOffDate.toLocaleDateString("ro-RO"),
-        //         pickHour,
-        //         dropHour,
-        //         pickupCity.name,
-        //         dropoffCity.name,
-        //     ).then((result) => {
-        //         //updatePrices()
-        //         scrollToComments();
-        //     })
-        // }
-        scrollToComments();
+        console.log("aaa: ")
+        if (validateInputs()) {
+            console.log("bbbb: ")
+            let pickHour = pickupHour.getHours() + "." + pickupHour.getMinutes()
+            let dropHour = dropoffHour.getHours() + "." + dropoffHour.getMinutes()
+            eurocarService.getPrice(
+                pickupDate.toLocaleDateString("ro-RO"),
+                dropOffDate.toLocaleDateString("ro-RO"),
+                pickHour,
+                dropHour,
+                pickupCity.name,
+                dropoffCity.name,
+            ).then((result) => {
+                console.log("result: " + result)
+                setComputedPrice(result)
+                scrollToCarSection();
+            })
+        }
+        //scrollToCarSection();
     }
 
-    const scrollToComments = () => {
+    const scrollToCarSection = () => {
         commentSectionRef.current.scrollIntoView({behavior: 'smooth'});
     }
 
     const validateInputs = () => {
         return !(pickupDate == null || dropOffDate == null ||
-            pickupHour == null || dropoffHour == null || pickupCity == null || dropoffCity);
+            pickupHour == null || dropoffHour == null || pickupCity == null || dropoffCity === null);
     }
 
     return (
@@ -75,7 +66,7 @@ export const MainPage = () => {
                                 <label htmlFor="pickupdate" className="mb-2 text-white">
                                     Dată preluare
                                 </label>
-                                <Calendar id="pickupdate" value={pickupDate} onChange={(e) => setPickupDate(e.value)}
+                                <Calendar id="pickupdate" value={pickupDate} onChange={(e) => updatePickupDate(e.value)}
                                           showIcon dateFormat="dd/mm/yy"
                                           pt={calendarProps}
                                 />
@@ -84,7 +75,7 @@ export const MainPage = () => {
                                 <label htmlFor="dropoffdate" className="block mb-2 text-white">
                                     Dată predare
                                 </label>
-                                <Calendar id="dropoffdate" value={dropOffDate} onChange={(e) => setDropOffDate(e.value)}
+                                <Calendar id="dropoffdate" value={dropOffDate} onChange={(e) => updateDropOffDate(e.value)}
                                           showIcon
                                           pt={calendarProps}
                                 />
@@ -93,7 +84,7 @@ export const MainPage = () => {
                                 <label htmlFor="buttondisplay" className="block mb-2 text-white">
                                     Oră preluare
                                 </label>
-                                <Calendar value={pickupHour} onChange={(e) => setPickupHour(e.value)} showIcon timeOnly
+                                <Calendar value={pickupHour} onChange={(e) => updatePickupHour(e.value)} showIcon timeOnly
                                           icon={() => <i className="pi pi-clock"/>}
                                           pt={calendarProps}/>
                             </div>
@@ -101,17 +92,15 @@ export const MainPage = () => {
                                 <label htmlFor="buttondisplay" className="block mb-2 text-white">
                                     Oră predare
                                 </label>
-                                <Calendar value={dropoffHour} onChange={(e) => setDropoffHour(e.value)} showIcon
-                                          timeOnly
+                                <Calendar value={dropoffHour} onChange={(e) => updateDropOffHour(e.value)} showIcon timeOnly
                                           icon={() => <i className="pi pi-clock"/>}
-                                          pt={calendarProps}
-                                />
+                                          pt={calendarProps}/>
                             </div>
                             <div className="flex flex-col">
                                 <label htmlFor="buttondisplay" className="block mb-2 text-white">
                                     Locație preluare
                                 </label>
-                                <Dropdown value={pickupCity} onChange={(e) => setPickupCity(e.value)}
+                                <Dropdown value={pickupCity} onChange={(e) => updatePickupCity(e.value)}
                                           options={cities} optionLabel="name"
                                           className="w-full md:w-14rem"/>
                             </div>
@@ -119,7 +108,7 @@ export const MainPage = () => {
                                 <label htmlFor="buttondisplay" className="block mb-2 text-white">
                                     Locație predare
                                 </label>
-                                <Dropdown value={dropoffCity} onChange={(e) => setDropoffCity(e.value)}
+                                <Dropdown value={dropoffCity} onChange={(e) => updateDropoffCity(e.value)}
                                           options={cities} optionLabel="name"
                                           className="w-full md:w-14rem"/>
                             </div>
@@ -134,7 +123,7 @@ export const MainPage = () => {
                 </div>
             </div>
             <div ref={commentSectionRef} className="w-full h-2/5 bg-myblue pt-20">
-                <CarSection/>
+                <CarSection computedPrice={computedPrice}/>
             </div>
         </>
     )

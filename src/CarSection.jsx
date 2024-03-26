@@ -7,7 +7,7 @@ import {Button} from "primereact/button";
 import {Link} from "react-router-dom";
 import {AppContext} from "./App"; // sau orice alt mod de gestionare a rutării
 
-export const CarSection = () => {
+export const CarSection = ({computedPrice}) => {
     return (
         <>
             <div className="w-full h-2/5 bg-myblue pt-20">
@@ -19,6 +19,13 @@ export const CarSection = () => {
                         <div className="flex w-1/2  items-center justify-center">
                             <h1 className="text-2xl">
                                 OPEL VIVARO 1.6
+                            </h1>
+                            <h1 className="text-2xl">
+                                {
+                                 computedPrice !== 0 ?
+                                     computedPrice + "Lei" :
+                                     ""
+                                }
                             </h1>
                             <Link reloadDocument to={"rent/car1"}>
                                 <Button text>Închiriază</Button>
@@ -33,7 +40,14 @@ export const CarSection = () => {
                             <h1 className="text-2xl">
                                 OPEL VIVARO 1.6
                             </h1>
-                            <Link reloadDocument to={"rent/car2"}>
+                            <h1 className="text-2xl">
+                                {
+                                    computedPrice !== 0 ?
+                                        computedPrice + "Lei" :
+                                        ""
+                                }
+                            </h1>
+                            <Link to={"rent/car2"}>
                                 <Button text>Închiriază</Button>
                             </Link>
                         </div>

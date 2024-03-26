@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import ImageComponent from "../ImageComponent";
 import CarRentalForm from "../CarRentalForm";
 import {AppContext} from "../App";
@@ -6,6 +6,10 @@ import {useParams} from "react-router-dom";
 
 const CarRentalPage = () => {
     const { selectedCar } = useParams();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className="flex items-center">

@@ -6,5 +6,14 @@ export const eurocarService = {
             .get('/price')
             .then(r => {
                 return r.data
+            }),
+    rent: (rentObj) =>
+        service
+            .post(
+                '/rent',
+                rentObj
+            )
+            .then(r => {
+                // return r.data
             })
 };

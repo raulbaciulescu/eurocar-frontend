@@ -7,14 +7,17 @@ import {AppContext} from "./appProvider";
 import {Dropdown} from "primereact/dropdown";
 import {eurocarService} from "./services/eurocarService";
 import {Toast} from 'primereact/toast';
+import {useParams} from "react-router-dom";
+import {InputNumber} from "primereact/inputnumber";
 
 
 const CarRentalForm = () => {
+    const { selectedCar } = useParams();
     const toast = useRef(null);
     const {pickupDate, updatePickupDate} = useContext(AppContext);
     const {dropOffDate, updateDropOffDate} = useContext(AppContext);
     const {pickupHour, updatePickupHour} = useContext(AppContext);
-    const {dropoffHour, updateDropoffHour} = useContext(AppContext);
+    const {dropoffHour, updateDropOffHour} = useContext(AppContext);
     const {pickupCity, updatePickupCity} = useContext(AppContext);
     const {dropoffCity, updateDropoffCity} = useContext(AppContext);
 
@@ -24,7 +27,7 @@ const CarRentalForm = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
 
     const onRentButtonClick = () => {
-        // if (validateInputs()) {
+         if (validateInputs()) {
             let pickHourTemp = pickupHour.getHours() + "." + pickupHour.getMinutes()
             let dropHourTemp = dropoffHour.getHours() + "." + dropoffHour.getMinutes()
 
@@ -39,24 +42,35 @@ const CarRentalForm = () => {
                 "dropoffHour": dropHourTemp,
                 "pickupCity": pickupCity.name,
                 "dropoffCity": dropoffCity.name,
+                "carId": selectedCar === "car1" ? 1 : 2
             }
 
             eurocarService
                 .rent(rentObj)
+                .catch(e => console.log("err" + e))
                 .then(r => {
-                    toast.current.show({
-                        severity: 'info',
-                        summary: 'Info',
-                        detail: 'Rezervarea a fost realizată!'
-                    });
+                    if (r.error !== undefined) {
+                        toast.current.show({
+                            severity: 'error',
+                            summary: 'Info',
+                            detail: 'Exista deja o rezervare pentru aceasta data'
+                        });
+                    } else {
+                        toast.current.show({
+                            severity: 'info',
+                            summary: 'Info',
+                            detail: 'Rezervarea a fost realizată!'
+                        });
+                    }
+                   // clearFields();
                 })
-        // } else
-        //     toast.current.show({
-        //         severity: 'warn',
-        //         summary: 'Warning',
-        //         detail: 'Trebuie completate toate câmpurile pentru rezervare!',
-        //         life: 3000
-        //     });
+        } else
+            toast.current.show({
+                severity: 'warn',
+                summary: 'Warning',
+                detail: 'Trebuie completate toate câmpurile pentru rezervare!',
+                life: 3000
+            });
     }
 
     const validateInputs = () => {
@@ -64,6 +78,21 @@ const CarRentalForm = () => {
             pickupHour == null || dropoffHour == null || pickupCity == null || dropoffCity === null || firstname === "" || lastname === "" ||
             email === "" || phoneNumber === ""
         );
+    }
+
+    const clearFields = () => {
+        setFirstname("")
+        setLastname("")
+        setEmail("")
+        setPhoneNumber("")
+
+        updatePickupDate(null)
+        updateDropOffDate(null)
+        updateDropOffHour(null)
+        updatePickupHour(null)
+
+        updatePickupCity(null)
+        updateDropoffCity(null)
     }
 
     return (
@@ -91,8 +120,8 @@ const CarRentalForm = () => {
                 </div>
                 <div className="flex flex-col w-60">
                     <label htmlFor="username" className="block my-2">Număr telefon</label>
-                    <InputText id="username" aria-describedby="username-help"
-                               value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}
+                    <InputText id="username" aria-describedby="username-help" keyfilter="int"
+                                 value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}
                     />
                 </div>
 
@@ -101,7 +130,7 @@ const CarRentalForm = () => {
                         Dată preluare
                     </label>
                     <Calendar id="pickupdate" value={pickupDate} onChange={(e) => updatePickupDate(e.value)}
-                              showIcon
+                              showIcon dateFormat="dd/mm/yy"
                               pt={calendarPropsWhiteBg}
                     />
                 </div>
@@ -110,7 +139,7 @@ const CarRentalForm = () => {
                         Dată preluare
                     </label>
                     <Calendar id="pickupdate" value={dropOffDate} onChange={(e) => updateDropOffDate(e.value)}
-                              showIcon
+                              showIcon dateFormat="dd/mm/yy"
                               pt={calendarPropsWhiteBg}
                     />
                 </div>
@@ -127,7 +156,7 @@ const CarRentalForm = () => {
                     <label htmlFor="buttondisplay" className="block my-2">
                         Oră preluare
                     </label>
-                    <Calendar value={dropoffHour} onChange={(e) => updateDropoffHour(e.value)} showIcon timeOnly
+                    <Calendar value={dropoffHour} onChange={(e) => updateDropOffHour(e.value)} showIcon timeOnly
                               icon={() => <i className="pi pi-clock"/>}
                               pt={calendarPropsWhiteBg}/>
                 </div>

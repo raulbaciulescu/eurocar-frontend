@@ -5,36 +5,41 @@ import {MainPage} from "./pages/MainPage";
 import {Footer} from "./Footer";
 import CarRentalPage from "./pages/CarRentalPage";
 import {AppProvider} from "./appProvider";
-
+import AdminPage from "./pages/AdminPage";
 
 function App() {
     return (
-       <AppProvider>
-           <BrowserRouter>
-               <Routes>
-                   <Route path="/" element={
-                       <>
-                           <MainPage/>
-                           <Footer/>
-                       </>
-                   }/>
-                   <Route path={`/rent/:selectedCar`} element={
-                       <>
-                           <Header/>
-                           <CarRentalPage/>
-                           <Footer/>
-                       </>
-                   }/>
-                   <Route path="/about" element={
-                       <div className="min-h-screen">
-                           <Header/>
-                           {/*<CarWithPricePage/>*/}
-                           <Footer/>
-                       </div>
-                   }/>
-               </Routes>
-           </BrowserRouter>
-       </AppProvider>
+        <AppProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={
+                        <>
+                            <MainPage/>
+                            <Footer/>
+                        </>
+                    }/>
+                    <Route path={`/rent/:selectedCar`} element={
+                        <>
+                            <Header/>
+                            <CarRentalPage/>
+                            <Footer/>
+                        </>
+                    }/>
+                    <Route path="/about" element={
+                        <div className="min-h-screen">
+                            <Header/>
+                            <Footer/>
+                        </div>
+                    }/>
+                    <Route path="/admin" element={
+                        <>
+                            <AdminPage/>
+                            <Footer/>
+                        </>
+                    }/>
+                </Routes>
+            </BrowserRouter>
+        </AppProvider>
 
     );
 }

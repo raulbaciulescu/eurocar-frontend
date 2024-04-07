@@ -1,4 +1,4 @@
-import React, {useContext, useRef, useState} from "react"
+import React, {useContext, useEffect, useRef, useState} from "react"
 import {Calendar} from "primereact/calendar";
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
@@ -9,8 +9,11 @@ import {CarSection} from "../CarSection";
 import Header from "../Header";
 import {calendarProps, cities} from "../constants";
 import {AppContext} from "../appProvider";
+import {Toast} from "primereact/toast";
+import {CarSection2} from "../CarSection2";
 
 export const MainPage = () => {
+    const toast = useRef(null);
     const commentSectionRef = useRef(null);
     const [computedPrice, setComputedPrice] = useState(0);
     const {pickupDate, updatePickupDate} = useContext(AppContext);
@@ -19,11 +22,34 @@ export const MainPage = () => {
     const {dropoffHour, updateDropOffHour} = useContext(AppContext);
     const {pickupCity, updatePickupCity} = useContext(AppContext);
     const {dropoffCity, updateDropoffCity} = useContext(AppContext);
+    const [disabledDatesState, setDisabledDatesState] = useState([]);
+    const t = new Date();
+
+    const dateTemplate = (date) => {
+        let tempDate = new Date(date.year, date.month, date.day);
+        let today = new Date();
+        if (tempDate < today) {
+            return (
+                <strong style={{textDecoration: 'line-through'}}>{date.day}</strong>
+            );
+        }
+
+        return date.day;
+    }
+
+    // useEffect(() => {
+    //     eurocarService.getAvailability(
+    //
+    //     );
+    //     console.log(disabledDatesState)
+    //     setDisabledDatesState(
+    //         [x]
+    //     );
+    // }, []);
+
 
     const getPrice = () => {
-        console.log("aaa: ")
         if (validateInputs()) {
-            console.log("bbbb: ")
             let pickHour = pickupHour.getHours() + "." + pickupHour.getMinutes()
             let dropHour = dropoffHour.getHours() + "." + dropoffHour.getMinutes()
             eurocarService.getPrice(
@@ -31,15 +57,12 @@ export const MainPage = () => {
                 dropOffDate.toLocaleDateString("ro-RO"),
                 pickHour,
                 dropHour,
-                pickupCity.name,
-                dropoffCity.name,
             ).then((result) => {
                 console.log("result: " + result)
-                setComputedPrice(result)
+                setComputedPrice(result.price)
                 scrollToCarSection();
             })
         }
-        //scrollToCarSection();
     }
 
     const scrollToCarSection = () => {
@@ -47,19 +70,40 @@ export const MainPage = () => {
     }
 
     const validateInputs = () => {
-        return !(pickupDate == null || dropOffDate == null ||
+        let secondCondition = false;
+        let firstCondition = !(pickupDate == null || dropOffDate == null ||
             pickupHour == null || dropoffHour == null || pickupCity == null || dropoffCity === null);
+        if (!firstCondition)
+            toast.current.show({
+                severity: 'warn',
+                summary: 'Warning',
+                detail: 'Trebuie completate toate câmpurile pentru rezervare!',
+                life: 3000
+            });
+        else {
+            secondCondition = pickupDate < dropOffDate;
+            if (!secondCondition)
+                toast.current.show({
+                    severity: 'warn',
+                    summary: 'Warning',
+                    detail: 'Data de preluare trebuie sa fie inainte de data de predare!',
+                    life: 3000
+                });
+        }
+
+        return firstCondition && secondCondition;
     }
 
     return (
         <>
+            <Toast ref={toast}/>
             <div className="h-screen">
                 <Header/>
-                <div className="w-full h-full bg-no-repeat bg-cover bg-left bg-fixed bg-mybg pt-20">
+                <div className="w-full h-full bg-no-repeat bg-cover bg-left bg-fixed bg-mybg pt-10">
                     <div
                         className="max-w-lg bg-[#121328] bg-opacity-60 rounded-lg overflow-hidden shadow-2xl p-6 sm:ml-8 md:ml-16 lg:ml-24 xl:ml-40">
                         <div className="flex items-center justify-center">
-                            <h1 className="font-bold text-2xl text-white">Închiriează o mașină</h1>
+                            <h1 className="font-bold text-2xl text-white">Închiriază o mașină</h1>
                         </div>
                         <div className="grid grid-cols-2 gap-4 mt-8">
                             <div className="flex flex-col">
@@ -69,14 +113,18 @@ export const MainPage = () => {
                                 <Calendar id="pickupdate" value={pickupDate} onChange={(e) => updatePickupDate(e.value)}
                                           showIcon dateFormat="dd/mm/yy"
                                           pt={calendarProps}
+                                          disabledDates={disabledDatesState}
+                                         // dateTemplate={dateTemplate}
+                                          minDate={t}
                                 />
                             </div>
                             <div className="flex flex-col">
                                 <label htmlFor="dropoffdate" className="block mb-2 text-white">
                                     Dată predare
                                 </label>
-                                <Calendar id="dropoffdate" value={dropOffDate} onChange={(e) => updateDropOffDate(e.value)}
-                                          showIcon
+                                <Calendar id="dropoffdate" value={dropOffDate}
+                                          onChange={(e) => updateDropOffDate(e.value)}
+                                          showIcon dateFormat="dd/mm/yy"
                                           pt={calendarProps}
                                 />
                             </div>
@@ -84,7 +132,8 @@ export const MainPage = () => {
                                 <label htmlFor="buttondisplay" className="block mb-2 text-white">
                                     Oră preluare
                                 </label>
-                                <Calendar value={pickupHour} onChange={(e) => updatePickupHour(e.value)} showIcon timeOnly
+                                <Calendar value={pickupHour} onChange={(e) => updatePickupHour(e.value)} showIcon
+                                          timeOnly
                                           icon={() => <i className="pi pi-clock"/>}
                                           pt={calendarProps}/>
                             </div>
@@ -92,7 +141,8 @@ export const MainPage = () => {
                                 <label htmlFor="buttondisplay" className="block mb-2 text-white">
                                     Oră predare
                                 </label>
-                                <Calendar value={dropoffHour} onChange={(e) => updateDropOffHour(e.value)} showIcon timeOnly
+                                <Calendar value={dropoffHour} onChange={(e) => updateDropOffHour(e.value)} showIcon
+                                          timeOnly
                                           icon={() => <i className="pi pi-clock"/>}
                                           pt={calendarProps}/>
                             </div>

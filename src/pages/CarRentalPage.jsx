@@ -31,7 +31,7 @@ const CarRentalPage = () => {
                                         <thead>
                                         <tr className="bg-gray-200">
                                             <th className="px-4 py-2">Durata</th>
-                                            <th className="px-4 py-2">Preț</th>
+                                            <th className="px-4 py-2">Preț pe zi</th>
                                         </tr>
                                         </thead>
                                         <tbody>

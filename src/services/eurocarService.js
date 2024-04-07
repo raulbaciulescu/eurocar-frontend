@@ -1,9 +1,9 @@
 import {service} from "./service";
 
 export const eurocarService = {
-    getPrice: () =>
+    getPrice: (pickupDate, dropOffDate, pickHour, dropHour) =>
         service
-            .get('/price')
+            .get(`/price/${pickupDate}/${dropOffDate}/${pickHour}/${dropHour}`)
             .then(r => {
                 return r.data
             }),
@@ -14,6 +14,6 @@ export const eurocarService = {
                 rentObj
             )
             .then(r => {
-                // return r.data
+                 return r.data
             })
 };

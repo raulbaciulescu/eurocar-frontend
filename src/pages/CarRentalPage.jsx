@@ -37,19 +37,23 @@ const CarRentalPage = () => {
                                         <tbody>
                                         <tr>
                                             <td className="border px-4 py-2">1-3 zile</td>
-                                            <td className="border px-4 py-2">45€</td>
+                                            <td className="border px-4 py-2">80€</td>
                                         </tr>
                                         <tr>
                                             <td className="border px-4 py-2">4-7 zile</td>
-                                            <td className="border px-4 py-2">40€</td>
+                                            <td className="border px-4 py-2">75€</td>
                                         </tr>
                                         <tr>
                                             <td className="border px-4 py-2">8-14 zile</td>
-                                            <td className="border px-4 py-2">35€</td>
+                                            <td className="border px-4 py-2">70€</td>
                                         </tr>
                                         <tr>
                                             <td className="border px-4 py-2">15-21 zile</td>
-                                            <td className="border px-4 py-2">30€</td>
+                                            <td className="border px-4 py-2">65€</td>
+                                        </tr>
+                                        <tr>
+                                            <td className="border px-4 py-2">22≥ zile</td>
+                                            <td className="border px-4 py-2">60€</td>
                                         </tr>
                                         </tbody>
                                     </table>

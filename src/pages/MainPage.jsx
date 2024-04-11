@@ -13,6 +13,7 @@ export const MainPage = () => {
     const commentSectionRef = useRef(null);
     const [computedPrice, setComputedPrice] = useState(0);
     const [disabledDatesState, setDisabledDatesState] = useState([]);
+    const [shownCars, setShownCars] = useState([1, 2])
 
     const dateTemplate = (date) => {
         let tempDate = new Date(date.year, date.month, date.day);
@@ -36,11 +37,16 @@ export const MainPage = () => {
             <div className="h-screen">
                 <Header/>
                 <div className="w-full h-full bg-no-repeat bg-cover bg-left bg-fixed bg-mybg pt-10">
-                   <MainForm scrollToCarSection={scrollToCarSection}/>
+                    <MainForm scrollToCarSection={scrollToCarSection}
+                              setComputedPrice={(price) => {
+                                  setComputedPrice(price)
+                              }}
+                              setShownCars={(availableCars) => setShownCars(availableCars)}
+                    />
                 </div>
             </div>
             <div ref={commentSectionRef} className="w-full h-2/5 bg-myblue pt-20">
-                <CarSection computedPrice={computedPrice}/>
+                <CarSection computedPrice={computedPrice} shownCars={shownCars}/>
             </div>
         </>
     )

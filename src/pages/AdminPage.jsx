@@ -5,6 +5,9 @@ import {AppContext} from "../App";
 import {useParams} from "react-router-dom";
 import {Calendar} from "primereact/calendar";
 import {Dropdown} from "primereact/dropdown";
+import Header from "../Header";
+import {MainForm} from "../MainForm";
+import {CarSection} from "../CarSection";
 
 const AdminPage = () => {
     const [date, setDate] = useState(null);
@@ -20,7 +23,7 @@ const AdminPage = () => {
         let today = new Date();
         if (tempDate < today) {
             return (
-                <strong style={{backgroundColor: "blue"}}>{date.day}</strong>
+                <strong style={{backgroundColor: "cyan"}}>{date.day}</strong>
             );
         }
 
@@ -41,28 +44,46 @@ const AdminPage = () => {
     }
 
     const onCarChange = (car) => {
-        console.log(car.name)
         setSelectedCity(car)
     }
 
     return (
-        <div className="h-screen">
-            <div className="w-full h-full bg-no-repeat bg-cover bg-left bg-fixed bg-mybg pt-20">
-                <div className="flex items-center justify-center">
-                    <div className="flex flex-col w-2/3 py-6">
-                        <Dropdown value={selectedCity} onChange={(e) => onCarChange(e.value)} options={cities}
-                                  optionLabel="name"
-                                  placeholder="Select a City"/>
-                        <Calendar
-                            value={date}
-                            onChange={(e) => setDate(e.value)}
-                            inline showWeek
-                            dateTemplate={selectedCity.code === "blue" ?  dateTemplate : dateTemplateWhite}
-                        />
-                    </div>
+        <>
+            <div className="h-screen">
+                <Header/>
+                <div className="w-full h-full pt-10">
+                    <Dropdown className="m-10" value={selectedCity} onChange={(e) => onCarChange(e.value)} options={cities}
+                                                  optionLabel="name"
+                                                  placeholder="Select a City"/>
+                    <Calendar
+                        className="m-10"
+                        value={date}
+                        onChange={(e) => setDate(e.value)}
+                        inline showWeek
+                        dateTemplate={selectedCity.code === "blue" ? dateTemplate : dateTemplateWhite}
+                    />
+                    {/*<MainForm scrollToCarSection={scrollToCarSection}/>*/}
                 </div>
             </div>
-        </div>
+        </>
+
+        // <div className="h-screen">
+        //     <div className="w-full h-full bg-no-repeat bg-cover bg-left bg-fixed bg-mybg pt-20">
+        //         <div className="flex items-center justify-center">
+        //             <div className="flex flex-col w-2/3 py-6">
+        //                 <Dropdown value={selectedCity} onChange={(e) => onCarChange(e.value)} options={cities}
+        //                           optionLabel="name"
+        //                           placeholder="Select a City"/>
+        //                 <Calendar
+        //                     value={date}
+        //                     onChange={(e) => setDate(e.value)}
+        //                     inline showWeek
+        //                     dateTemplate={selectedCity.code === "blue" ?  dateTemplate : dateTemplateWhite}
+        //                 />
+        //             </div>
+        //         </div>
+        //     </div>
+        // </div>
     );
 }
 

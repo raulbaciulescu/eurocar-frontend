@@ -9,10 +9,9 @@ import {eurocarService} from "./services/eurocarService";
 import {calendarProps, cities} from "./constants";
 import {Toast} from "primereact/toast";
 
-export const MainForm = ({scrollToCarSection}) => {
+export const MainForm = ({scrollToCarSection, setComputedPrice, setShownCars}) => {
     const toast = useRef(null);
     const commentSectionRef = useRef(null);
-    const [computedPrice, setComputedPrice] = useState(0);
     const {pickupDate, updatePickupDate} = useContext(AppContext);
     const {dropOffDate, updateDropOffDate} = useContext(AppContext);
     const {pickupHour, updatePickupHour} = useContext(AppContext);
@@ -57,14 +56,11 @@ export const MainForm = ({scrollToCarSection}) => {
             ).then((result) => {
                 console.log("result: " + result)
                 setComputedPrice(result.price)
+                setShownCars(result.availableCars)
                 scrollToCarSection();
             })
         }
     }
-
-    // const scrollToCarSection = () => {
-    //     commentSectionRef.current.scrollIntoView({behavior: 'smooth'});
-    // }
 
     const validateInputs = () => {
         let secondCondition = false;

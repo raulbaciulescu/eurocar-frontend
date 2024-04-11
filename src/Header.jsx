@@ -59,12 +59,12 @@ export default function Header() {
                     </Link>
                     <h1 className="text-xl font-bold">Eurocar GMN</h1>
                 </div>
-                <div className="flex items-center">
-                    <Button label="Contact" style={{color: 'white'}} text/>
-                    <Link to="/about" className="inline-block">
-                        <Button label="About" style={{color: 'white'}} text/>
-                    </Link>
-                </div>
+                {/*<div className="flex items-center">*/}
+                {/*    <Button label="Contact" style={{color: 'white'}} text/>*/}
+                {/*    <Link to="/about" className="inline-block">*/}
+                {/*        <Button label="About" style={{color: 'white'}} text/>*/}
+                {/*    </Link>*/}
+                {/*</div>*/}
             </header>
         </>
     );

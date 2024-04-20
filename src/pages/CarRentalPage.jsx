@@ -1,11 +1,10 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import ImageComponent from "../ImageComponent";
 import CarRentalForm from "../CarRentalForm";
-import {AppContext} from "../App";
 import {useParams} from "react-router-dom";
 
 const CarRentalPage = () => {
-    const { selectedCar } = useParams();
+    const {selectedCar} = useParams();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -16,7 +15,7 @@ const CarRentalPage = () => {
             <div className="w-full items-center flex flex-col">
                 <div className="w-3/5 flex h-16 items-center py-6">
                     <h1 className="text-2xl pl-10">
-                        OPEL VIVARO 1.6
+                        Opel Vivaro 1.6 diesel 125cp 8 + 1 locuri
                     </h1>
                 </div>
                 <div className="w-3/5 flex">

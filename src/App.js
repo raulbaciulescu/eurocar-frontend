@@ -10,7 +10,7 @@ import AdminPage from "./pages/AdminPage";
 function App() {
     return (
         <AppProvider>
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <Routes>
                     <Route path="/" element={
                         <>
@@ -40,7 +40,6 @@ function App() {
                 </Routes>
             </BrowserRouter>
         </AppProvider>
-
     );
 }
 

@@ -47,7 +47,7 @@ export const PhotoService = {
 
 
 const ImageComponent = () => {
-    const { selectedCar } = useParams();
+    const {selectedCar} = useParams();
     const [images, setImages] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const galleria = useRef(null);
@@ -76,7 +76,8 @@ const ImageComponent = () => {
             <div className="grid grid-rows-4 grid-flow-col gap-4" style={{maxWidth: '300px'}}>
                 {
                     images && images.map((image, index) => {
-                        let imgEl = <img src={image.thumbnailImageSrc} alt={image.alt} style={{cursor: 'pointer', width: 70, height: 70, "object-fit": "cover"}} onClick={
+                        let imgEl = <img src={image.thumbnailImageSrc} alt={image.alt}
+                                         style={{cursor: 'pointer', width: 70, height: 70, "object-fit": "cover"}} onClick={
                             () => {
                                 setActiveIndex(index);
                                 galleria.current.show()

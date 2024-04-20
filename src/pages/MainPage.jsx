@@ -1,10 +1,8 @@
-import React, {useContext, useRef, useState} from "react"
+import React, {useRef, useState} from "react"
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
-import {eurocarService} from "../services/eurocarService";
 import {CarSection} from "../CarSection";
 import Header from "../Header";
-import {AppContext} from "../appProvider";
 import {Toast} from "primereact/toast";
 import {MainForm} from "../MainForm";
 

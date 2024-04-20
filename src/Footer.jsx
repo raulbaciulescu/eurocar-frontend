@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import logo from "./logo-gray.svg";
 
 export const Footer = () => {
@@ -53,24 +53,26 @@ export const Footer = () => {
                     </div>
                     <div className="flex flex-wrap flex-grow mt-10 -mb-10 text-center md:pl-20 md:mt-0 md:text-left">
                         <div className="w-full px-4 lg:w-1/4 md:w-1/2">
-                            <h2 className="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font">Contact Adrian</h2>
-                            <nav className="mb-10 list-none">
-                                <li className="mt-3">
-                                    <a className="text-gray-500 cursor-pointer hover:text-gray-900">0740632150</a>
-                                </li>
-                                <li className="mt-3">
-                                    <a className="text-gray-500 cursor-pointer hover:text-gray-900">adrian@eurocargmn.ro</a>
-                                </li>
-                            </nav>
-                        </div>
-                        <div className="w-full px-4 lg:w-1/4 md:w-1/2">
-                            <h2 className="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font">Contact Călin</h2>
+                            <h2 className="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font">Contact
+                                Călin</h2>
                             <nav className="mb-10 list-none">
                                 <li className="mt-3">
                                     <a className="text-gray-500 cursor-pointer hover:text-gray-900">0755577043</a>
                                 </li>
                                 <li className="mt-3">
                                     <a className="text-gray-500 cursor-pointer hover:text-gray-900">calin@eurocargmn.ro</a>
+                                </li>
+                            </nav>
+                        </div>
+                        <div className="w-full px-4 lg:w-1/4 md:w-1/2">
+                            <h2 className="mb-3 text-sm font-medium tracking-widest text-gray-900 uppercase title-font">Contact
+                                Adrian</h2>
+                            <nav className="mb-10 list-none">
+                                <li className="mt-3">
+                                    <a className="text-gray-500 cursor-pointer hover:text-gray-900">0740632150</a>
+                                </li>
+                                <li className="mt-3">
+                                    <a className="text-gray-500 cursor-pointer hover:text-gray-900">adrian@eurocargmn.ro</a>
                                 </li>
                             </nav>
                         </div>

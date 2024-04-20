@@ -8,11 +8,10 @@ import {Dropdown} from "primereact/dropdown";
 import {eurocarService} from "./services/eurocarService";
 import {Toast} from 'primereact/toast';
 import {useParams} from "react-router-dom";
-import {InputNumber} from "primereact/inputnumber";
 
 
 const CarRentalForm = () => {
-    const { selectedCar } = useParams();
+    const {selectedCar} = useParams();
     const toast = useRef(null);
     const {pickupDate, updatePickupDate} = useContext(AppContext);
     const {dropOffDate, updateDropOffDate} = useContext(AppContext);
@@ -27,7 +26,7 @@ const CarRentalForm = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
 
     const onRentButtonClick = () => {
-         if (validateInputs()) {
+        if (validateInputs()) {
             let pickHourTemp = pickupHour.getHours() + "." + pickupHour.getMinutes()
             let dropHourTemp = dropoffHour.getHours() + "." + dropoffHour.getMinutes()
 
@@ -62,7 +61,7 @@ const CarRentalForm = () => {
                             detail: 'Rezervarea a fost realizată!'
                         });
                     }
-                   // clearFields();
+                    // clearFields();
                 })
         } else
             toast.current.show({
@@ -121,7 +120,7 @@ const CarRentalForm = () => {
                 <div className="flex flex-col w-60">
                     <label htmlFor="username" className="block my-2">Număr telefon</label>
                     <InputText id="username" aria-describedby="username-help" keyfilter="int"
-                                 value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}
+                               value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}
                     />
                 </div>
 

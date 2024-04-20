@@ -4,15 +4,18 @@ const headers = {
     'Content-Type': 'application/json',
 }
 
+const URL = "http://localhost:8080";
+//const URL = "https://eurocargmn-6d6f50172cea.herokuapp.com";
+
 export const service = {
     post: (url, obj, config) =>
-        axios.post(`http://localhost:8080${url}`, JSON.stringify(obj), {
+        axios.post(`${URL}${url}`, JSON.stringify(obj), {
             ...config, headers
         }).then(response => {
             return response;
         }).catch(res => res.response),
     get: (url, obj) =>
-        axios.get(`http://localhost:8080${url}`, {
+        axios.get(`${URL}${url}`, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -21,7 +24,7 @@ export const service = {
             return response;
         }).catch(res => res.response),
     delete: (url, obj) =>
-        axios.delete(`http://localhost:8080/${url}`, {
+        axios.delete(`${URL}${url}`, {
             headers,
             data: obj
         }).then(response => {

@@ -14,6 +14,6 @@ export const eurocarService = {
                 rentObj
             )
             .then(r => {
-                 return r.data
+                return r.data
             })
 };

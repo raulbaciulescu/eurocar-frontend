@@ -1,13 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
-import ImageComponent from "../ImageComponent";
-import CarRentalForm from "../CarRentalForm";
-import {AppContext} from "../App";
-import {useParams} from "react-router-dom";
+import React, {useState} from 'react';
 import {Calendar} from "primereact/calendar";
 import {Dropdown} from "primereact/dropdown";
 import Header from "../Header";
-import {MainForm} from "../MainForm";
-import {CarSection} from "../CarSection";
 
 const AdminPage = () => {
     const [date, setDate] = useState(null);
@@ -52,9 +46,10 @@ const AdminPage = () => {
             <div className="h-screen">
                 <Header/>
                 <div className="w-full h-full pt-10">
-                    <Dropdown className="m-10" value={selectedCity} onChange={(e) => onCarChange(e.value)} options={cities}
-                                                  optionLabel="name"
-                                                  placeholder="Select a City"/>
+                    <Dropdown className="m-10" value={selectedCity} onChange={(e) => onCarChange(e.value)}
+                              options={cities}
+                              optionLabel="name"
+                              placeholder="Select a City"/>
                     <Calendar
                         className="m-10"
                         value={date}

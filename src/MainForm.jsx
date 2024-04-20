@@ -53,8 +53,7 @@ export const MainForm = ({scrollToCarSection, setComputedPrice, setShownCars}) =
                 dropOffDate.toLocaleDateString("ro-RO"),
                 pickHour,
                 dropHour,
-            ).then((result) => {
-                console.log("result: " + result)
+            ).then(result => {
                 setComputedPrice(result.price)
                 setShownCars(result.availableCars)
                 scrollToCarSection();

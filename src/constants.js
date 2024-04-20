@@ -18,4 +18,6 @@ export const cities = [
     {name: 'Cluj-Napoca'},
     {name: 'Sighișoara'},
     {name: 'Brașov'},
+    {name: 'Bistrița-Năsăud'},
+    {name: 'Sibiu'},
 ];

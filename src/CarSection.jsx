@@ -19,12 +19,12 @@ export const CarSection = ({computedPrice, shownCars}) => {
                                          width="300px"/>
                                 </div>
                                 <div className="w-3/5 flex flex-col">
-                                    <h1 className="text-2xl mx-6">
-                                        Opel Vivaro 1.6
+                                    <h1 className="lg:text-xl mx-6">
+                                        Opel Vivaro 1.6 diesel, 125cp, 8+1 locuri
                                     </h1>
-                                    <hr className="border-gray-200 lg:my-4"/>
+                                    <hr className="border-gray-200 lg:my-2"/>
                                     <div className="flex justify-between items-center">
-                                        <Link to={"rent/car2"}>
+                                        <Link to={"rent/car1"}>
                                             <Button text className="text-myblue" label="Închiriază"></Button>
                                         </Link>
                                         <p className="font-bold text-gray-900 mr-6">
@@ -45,10 +45,11 @@ export const CarSection = ({computedPrice, shownCars}) => {
                                          width="300px"/>
                                 </div>
                                 <div className="w-3/5 flex flex-col">
-                                    <h1 className="text-2xl mx-6">
-                                        Opel Vivaro 1.6
+                                    <h1 className="lg:text-xl mx-6">
+                                        Opel Vivaro 1.6 diesel, 125cp, 8+1 locuri
                                     </h1>
-                                    <hr className="border-gray-200 lg:my-4"/>
+                                    {/*<hr className="border-gray-200 lg:my-4"/> with short text */}
+                                    <hr className="border-gray-200 lg:my-2"/>
                                     <div className="flex justify-between items-center">
                                         <Link to={"rent/car2"}>
                                             <Button text className="text-myblue" label="Închiriază"></Button>

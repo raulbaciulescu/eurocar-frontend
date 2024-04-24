@@ -21,5 +21,14 @@ export const eurocarService = {
             .get('/rents')
             .then(r => {
                 return r.data
+            }),
+    updateRent: (rent) =>
+        service
+            .put(
+                '/rents',
+                rent
+            )
+            .then(r => {
+                return r.data
             })
 };

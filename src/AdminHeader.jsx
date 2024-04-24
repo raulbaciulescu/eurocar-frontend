@@ -4,18 +4,6 @@ import {Link} from "react-router-dom";
 import {Button} from "primereact/button";
 
 export default function AdminHeader() {
-    const [navbarCollapse, setNavbarCollapse] = useState(false);
-
-    const [activeDropdown, setActiveDropdown] = useState(null);
-
-    const handleMouseEnter = (itemId) => {
-        setActiveDropdown(itemId);
-    };
-
-    const handleMouseLeave = () => {
-        setActiveDropdown(null);
-    };
-
     return (
         <>
             <header className="bg-[#121328] text-white p-4 flex justify-between items-center">

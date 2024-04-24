@@ -5,7 +5,7 @@ const headers = {
 }
 
 const URL = "http://localhost:8080";
-//const URL = "https://eurocargmn-6d6f50172cea.herokuapp.com";
+// const URL = "https://eurocargmn-6d6f50172cea.herokuapp.com";
 
 export const service = {
     post: (url, obj, config) =>
@@ -27,6 +27,12 @@ export const service = {
         axios.delete(`${URL}${url}`, {
             headers,
             data: obj
+        }).then(response => {
+            return response;
+        }).catch(res => res.response),
+    put: (url, obj, config) =>
+        axios.put(`${URL}${url}`, JSON.stringify(obj), {
+            ...config, headers
         }).then(response => {
             return response;
         }).catch(res => res.response),

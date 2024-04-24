@@ -5,15 +5,14 @@ import AdminHeader from "../AdminHeader";
 import {eurocarService} from "../services/eurocarService";
 
 
-const AdminPage = () => {
+const AdminCalendarPage = () => {
     const [date, setDate] = useState(null);
-    const [selectedCity, setSelectedCity] = useState({name: 'masina albastra', code: 'blue'});
+    const [selectedCity, setSelectedCity] = useState({name: 'Mașina Albastră', code: 'blue'});
     const [rents, setRents] = useState([]);
     const cities = [
-        {name: 'masina albastra', code: 'blue'},
-        {name: 'masina alba', code: 'white'},
+        {name: 'Mașina Albastră', code: 'blue'},
+        {name: 'Mașina Albă', code: 'white'},
     ];
-
 
     useEffect(() => {
         eurocarService.getRents()
@@ -95,7 +94,7 @@ const AdminPage = () => {
         <>
             <div className="h-screen">
                 <AdminHeader/>
-                <div className="w-full h-full flex flex-col items-center justify-center">
+                <div className="w-full flex flex-col items-center justify-center">
                     <Dropdown className="m-10" value={selectedCity} onChange={(e) => onCarChange(e.value)}
                               options={cities}
                               optionLabel="name"
@@ -113,4 +112,4 @@ const AdminPage = () => {
     );
 }
 
-export default AdminPage;
+export default AdminCalendarPage;

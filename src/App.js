@@ -1,17 +1,17 @@
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
 import Header from "./Header";
-import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+import {HashRouter, Navigate, Route, Routes} from "react-router-dom";
 import {MainPage} from "./pages/MainPage";
 import {Footer} from "./Footer";
 import CarRentalPage from "./pages/CarRentalPage";
 import {AppProvider} from "./appProvider";
-import AdminPage from "./pages/AdminPage";
+import AdminCalendarPage from "./pages/AdminCalendarPage";
 import AdminTablePage from "./pages/AdminTablePage";
 
 function App() {
     return (
         <AppProvider>
-            <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <HashRouter>
                 <Routes>
                     <Route path="/" element={
                         <>
@@ -26,18 +26,6 @@ function App() {
                             <Footer/>
                         </>
                     }/>
-                    <Route path="/about" element={
-                        <div className="min-h-screen">
-                            <Header/>
-                            <Footer/>
-                        </div>
-                    }/>
-                    {/*<Route path="/admin" element={*/}
-                    {/*    <>*/}
-                    {/*        <AdminPage/>*/}
-                    {/*        <Footer/>*/}
-                    {/*    </>*/}
-                    {/*}/>*/}
                     <Route
                         path="/admin"
                         element={
@@ -48,7 +36,7 @@ function App() {
                     />
                     <Route path="/admin/calendar" element={
                         <>
-                            <AdminPage/>
+                            <AdminCalendarPage/>
                             <Footer/>
                         </>}/>
 
@@ -56,9 +44,11 @@ function App() {
                         <>
                             <AdminTablePage/>
                             <Footer/>
-                        </>}/>
+                        </>
+                    }
+                    />
                 </Routes>
-            </BrowserRouter>
+            </HashRouter>
         </AppProvider>
     );
 }

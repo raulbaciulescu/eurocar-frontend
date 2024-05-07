@@ -43,7 +43,7 @@ const LoginPage = () => {
         <>
             <Toast ref={toast}/>
             <div className="h-screen flex justify-center">
-                <div className="h-3/5 w-2/3 bg-white rounded-xl overflow-hidden shadow-lg p-4 m-6 flex flex-col items-center">
+                <div className="h-3/5 lg:w-1/3 bg-white rounded-xl overflow-hidden shadow-lg p-4 m-6 flex flex-col items-center">
                     <div className="text-center my-5">
                         <div className="text-900 text-3xl font-medium mb-3">Bun venit</div>
                         <span className="text-600 font-medium line-height-3">Nu ai cont?</span>

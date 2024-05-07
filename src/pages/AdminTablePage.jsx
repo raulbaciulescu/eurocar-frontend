@@ -5,6 +5,7 @@ import {Column} from "primereact/column";
 import {eurocarService} from "../services/eurocarService";
 import {InputText} from "primereact/inputtext";
 import {Calendar} from "primereact/calendar";
+import NoAuthorization from "./NoAuthorization";
 
 
 const AdminTablePage = () => {
@@ -84,7 +85,7 @@ const AdminTablePage = () => {
     };
 
     return (
-        <>
+        localStorage.getItem('token') != null ?
             <div className="h-screen">
                 <AdminHeader/>
                 <div className="card">
@@ -125,8 +126,8 @@ const AdminTablePage = () => {
                             sortable field="carId" header="Car ID"/>
                     </DataTable>
                 </div>
-            </div>
-        </>
+            </div> :
+            <NoAuthorization/>
     );
 }
 

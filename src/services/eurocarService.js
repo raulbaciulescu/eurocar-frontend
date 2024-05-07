@@ -30,5 +30,23 @@ export const eurocarService = {
             )
             .then(r => {
                 return r.data
-            })
+            }),
+    login: (loginRequest) =>
+        service
+            .post(
+                '/auth/login',
+                loginRequest
+            )
+            .then(r => {
+                return r.data
+            }),
+    register: (registerRequest) =>
+        service
+            .post(
+                '/auth/register',
+                registerRequest
+            )
+            .then(r => {
+                return r.data
+            }),
 };

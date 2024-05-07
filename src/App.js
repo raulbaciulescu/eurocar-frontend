@@ -7,8 +7,22 @@ import CarRentalPage from "./pages/CarRentalPage";
 import {AppProvider} from "./appProvider";
 import AdminCalendarPage from "./pages/AdminCalendarPage";
 import AdminTablePage from "./pages/AdminTablePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import {useEffect, useState} from "react";
 
 function App() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    // useEffect(() => {
+    //     console.log(localStorage.getItem('token'))
+    //     const token = localStorage.getItem('token');
+    //     if (token != null) {
+    //         setIsAuthenticated(true);
+    //         window.location.href = "/#/admin/login"
+    //     }
+    // });
+
     return (
         <AppProvider>
             <HashRouter>
@@ -38,11 +52,28 @@ function App() {
                         <>
                             <AdminCalendarPage/>
                             <Footer/>
-                        </>}/>
+                        </>
+                    }/>
 
                     <Route path="/admin/table" element={
                         <>
                             <AdminTablePage/>
+                            <Footer/>
+                        </>
+                    }
+                    />
+                    <Route path="/admin/login" element={
+                        <>
+                            <Header/>
+                            <LoginPage/>
+                            <Footer/>
+                        </>
+                    }
+                    />
+                    <Route path="/admin/register" element={
+                        <>
+                            <Header/>
+                            <RegisterPage/>
                             <Footer/>
                         </>
                     }

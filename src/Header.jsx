@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import logo from "./logo1.svg"
 import {Link} from "react-router-dom";
+import {Button} from "primereact/button"
 
 export default function Header() {
     const [navbarCollapse, setNavbarCollapse] = useState(false);
@@ -58,12 +59,11 @@ export default function Header() {
                     </Link>
                     <h1 className="text-xl font-bold">Eurocar GMN</h1>
                 </div>
-                {/*<div className="flex items-center">*/}
-                {/*    <Button label="Contact" style={{color: 'white'}} text/>*/}
-                {/*    <Link to="/about" className="inline-block">*/}
-                {/*        <Button label="About" style={{color: 'white'}} text/>*/}
-                {/*    </Link>*/}
-                {/*</div>*/}
+                <div className="flex items-center">
+                    <Link to="/special-cars" className="inline-block">
+                        <Button label="Mașini Speciale" style={{color: 'white'}} text/>
+                    </Link>
+                </div>
             </header>
         </>
     );

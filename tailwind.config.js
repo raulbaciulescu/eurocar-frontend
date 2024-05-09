@@ -13,6 +13,7 @@ module.exports = {
                 'special1': "url('D:\\Projects\\eurocar-frontend\\public\\images\\special1-4.PNG')",
                 'special2': "url('D:\\Projects\\eurocar-frontend\\public\\images\\special2.PNG')",
                 'bgspecial1': "url('D:\\Projects\\eurocar-frontend\\public\\images\\bg-special2.png')",
+                'phone': "url('D:\\Projects\\eurocar-frontend\\public\\images\\phone.png')",
             }
         },
     },

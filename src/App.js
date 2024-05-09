@@ -11,19 +11,9 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import {useState} from "react";
 import {Helmet} from "react-helmet";
+import SpecialCarsPage from "./pages/SpecialCarsPage";
 
 function App() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-    // useEffect(() => {
-    //     console.log(localStorage.getItem('token'))
-    //     const token = localStorage.getItem('token');
-    //     if (token != null) {
-    //         setIsAuthenticated(true);
-    //         window.location.href = "/#/admin/login"
-    //     }
-    // });
-
     return (
         <>
             <Helmet>
@@ -79,6 +69,13 @@ function App() {
                             <>
                                 <Header/>
                                 <RegisterPage/>
+                                <Footer/>
+                            </>
+                        }
+                        />
+                        <Route path="/special-cars" element={
+                            <>
+                                <SpecialCarsPage/>
                                 <Footer/>
                             </>
                         }

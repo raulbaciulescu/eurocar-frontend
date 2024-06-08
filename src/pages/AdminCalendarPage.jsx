@@ -3,6 +3,7 @@ import {Calendar} from "primereact/calendar";
 import {Dropdown} from "primereact/dropdown";
 import AdminHeader from "../AdminHeader";
 import {eurocarService} from "../services/eurocarService";
+import NoAuthorization from "./NoAuthorization";
 
 
 const AdminCalendarPage = () => {
@@ -24,7 +25,7 @@ const AdminCalendarPage = () => {
 
     const dateTemplateBlue = (date) => {
         let tempDate = new Date(date.year, date.month, date.day);
-        for(let i = 0; i < rents.length; i++) {
+        for (let i = 0; i < rents.length; i++) {
             if (rents[i].carId === 1) {
                 let [day, month, year] = rents[i].pickupDate.split('.');
                 const pickup = new Date(`${year}-${month}-${day}`);
@@ -53,7 +54,7 @@ const AdminCalendarPage = () => {
 
     const dateTemplateWhite = (date) => {
         let tempDate = new Date(date.year, date.month, date.day);
-        for(let i = 0; i < rents.length; i++) {
+        for (let i = 0; i < rents.length; i++) {
             if (rents[i].carId === 2) {
                 let [day, month, year] = rents[i].pickupDate.split('.');
                 const pickup = new Date(`${year}-${month}-${day}`);
@@ -91,7 +92,7 @@ const AdminCalendarPage = () => {
     }
 
     return (
-        <>
+        localStorage.getItem('token') != null ?
             <div className="h-screen">
                 <AdminHeader/>
                 <div className="w-full flex flex-col items-center justify-center">
@@ -107,8 +108,8 @@ const AdminCalendarPage = () => {
                         dateTemplate={selectedCity.code === "blue" ? dateTemplateBlue : dateTemplateWhite}
                     />
                 </div>
-            </div>
-        </>
+            </div> :
+            <NoAuthorization/>
     );
 }
 

@@ -7,13 +7,20 @@ const headers = {
 const URL = "http://localhost:8080";
 // const URL = "https://eurocargmn-6d6f50172cea.herokuapp.com";
 
+
+const axiosUnauthorizedInstance = axios.create({
+    baseURL: URL,
+    timeout: 30000,
+    headers: {'Content-Type': 'application/json'}
+});
+
 export const service = {
     post: (url, obj, config) =>
-        axios.post(`${URL}${url}`, JSON.stringify(obj), {
+        axiosUnauthorizedInstance.post(`${URL}${url}`, JSON.stringify(obj), {
             ...config, headers
         }).then(response => {
             return response;
-        }).catch(res => res.response),
+        }),
     get: (url, obj) =>
         axios.get(`${URL}${url}`, {
             headers: {

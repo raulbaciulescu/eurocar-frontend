@@ -46,22 +46,21 @@ const CarRentalForm = () => {
 
             eurocarService
                 .rent(rentObj)
-                .catch(e => console.log("err" + e))
                 .then(r => {
-                    if (r.error !== undefined) {
-                        toast.current.show({
-                            severity: 'error',
-                            summary: 'Info',
-                            detail: 'Exista deja o rezervare pentru aceasta data'
-                        });
-                    } else {
-                        toast.current.show({
-                            severity: 'info',
-                            summary: 'Info',
-                            detail: 'Rezervarea a fost realizată!'
-                        });
-                    }
-                    // clearFields();
+                    console.log(r)
+                    toast.current.show({
+                        severity: 'info',
+                        summary: 'Info',
+                        detail: 'Rezervarea a fost realizată!'
+                    });
+                })
+                .catch(e => {
+                    console.log(e)
+                    toast.current.show({
+                        severity: 'error',
+                        summary: 'Info',
+                        detail: 'Exista deja o rezervare pentru aceasta data'
+                    });
                 })
         } else
             toast.current.show({

@@ -1,11 +1,45 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Button} from "primereact/button";
 import {Link} from "react-router-dom";
 import logo from "../logo1.svg";
+import {Galleria} from "primereact/galleria";
+
+
+export const SpecialCarsService = {
+    getData() {
+        return [
+            {
+                itemImageSrc: `/images/special1/1.jpg`,
+                thumbnailImageSrc: `/images/special1/1.jpg`,
+                alt: 'Image',
+            },
+            {
+                itemImageSrc: `/images/special1/2.jpg`,
+                thumbnailImageSrc: `/images/special1/2.jpg`,
+                alt: 'Image',
+            },
+            {
+                itemImageSrc: `/images/special2/1.jpg`,
+                thumbnailImageSrc: `/images/special2/1.jpg`,
+                alt: 'Image',
+            },
+            {
+                itemImageSrc: `/images/special2/2.jpg`,
+                thumbnailImageSrc: `/images/special2/2.jpg`,
+                alt: 'Image',
+            },
+        ];
+    },
+
+    getImages() {
+        return Promise.resolve(this.getData());
+    }
+};
+
 
 const Carousel = () => {
     const [index, setIndex] = useState(0);
-    const images = [
+    const cars = [
         "/images/with_shadow-removebg-preview.png",
         "/images/specialcar2.png",
     ];
@@ -15,17 +49,49 @@ const Carousel = () => {
             phoneNumber: "0740632150"
         },
         {
-            title: "Mercedes-Benz W140", // Add the same text
+            title: "Mercedes-Benz W140",
             phoneNumber: "0740632150"
         },
     ];
 
     const handleNext = () => {
-        setIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+        setIndex((prevIndex) => (prevIndex === 1 ? 0 : 1));
     };
+
+    const [images, setImages] = useState(null);
+    const galleria = useRef(null);
+
+    const responsiveOptions = [
+        {
+            breakpoint: '1500px',
+            numVisible: 5
+        },
+        {
+            breakpoint: '1024px',
+            numVisible: 3
+        },
+        {
+            breakpoint: '768px',
+            numVisible: 2
+        },
+        {
+            breakpoint: '560px',
+            numVisible: 1
+        }
+    ];
+
+    useEffect(() => {
+        SpecialCarsService.getImages().then(data => setImages(data));
+    }, []);
+
+    const itemTemplate = (item) => {
+        return <img src={item.itemImageSrc} alt={item.alt} style={{ width: '100%', display: 'block' }} />;
+    }
 
     return (
         <>
+            <Galleria ref={galleria} value={images} showThumbnails={false} numVisible={9} style={{ maxWidth: '50%' }}
+                      circular fullScreen showItemNavigators item={itemTemplate}/>
             <div className="lg:bg-bgspecial1 bg-phone bg-no-repeat bg-cover h-screen">
                 <header className="bg-transparent text-white p-4 flex justify-between items-center">
                     <div className="flex items-center">
@@ -38,14 +104,15 @@ const Carousel = () => {
                 <div className="w-full mt-20 flex items-center flex-wrap">
                     <div className="lg:w-2/5 w-full lg:order-2 md:order-2">
                         <div className="flex items-center h-96 relative">
-                            {images.map((img, i) => (
+                            {cars.map((img, i) => (
                                 <img
                                     key={i}
                                     src={img}
                                     alt=""
-                                    className={`absolute inset-0 duration-500 ${
+                                    className={`cursor-pointer absolute inset-0 duration-500 ${
                                         i === index ? 'opacity-100' : 'opacity-0'
                                     }`}
+                                    onClick={() => galleria.current.show()}
                                 />
                             ))}
                         </div>

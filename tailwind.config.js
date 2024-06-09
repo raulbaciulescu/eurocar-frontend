@@ -7,13 +7,14 @@ module.exports = {
         extend: {
             colors: {
                 'myblue': '#00275B',
+                'specialcars': '#0E2E3D',
             },
             backgroundImage: {
-                'mybg': "url('D:\\Projects\\eurocar-frontend\\public\\images\\bg3.PNG')",
-                'special1': "url('D:\\Projects\\eurocar-frontend\\public\\images\\special1-4.PNG')",
-                'special2': "url('D:\\Projects\\eurocar-frontend\\public\\images\\special2.PNG')",
-                'bgspecial1': "url('D:\\Projects\\eurocar-frontend\\public\\images\\bg-special2.png')",
-                'phone': "url('D:\\Projects\\eurocar-frontend\\public\\images\\phone.png')",
+                'mybg': "url('D:\\Projects\\eurocar-frontend2\\public\\images\\bg3.PNG')",
+                'special1': "url('D:\\Projects\\eurocar-frontend2\\public\\images\\special1-4.PNG')",
+                'special2': "url('D:\\Projects\\eurocar-frontend2\\public\\images\\special2.PNG')",
+                'bgspecial1': "url('D:\\Projects\\eurocar-frontend2\\public\\images\\background-special.png')",
+                'phone': "url('D:\\Projects\\eurocar-frontend2\\public\\images\\background-phone.JPG')",
             }
         },
     },

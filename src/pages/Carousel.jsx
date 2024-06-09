@@ -40,8 +40,8 @@ export const SpecialCarsService = {
 const Carousel = () => {
     const [index, setIndex] = useState(0);
     const cars = [
-        "/images/with_shadow-removebg-preview.png",
-        "/images/specialcar2.png",
+        "/images/png12.png",
+        "/images/png22.png",
     ];
     const texts = [
         {
@@ -85,12 +85,12 @@ const Carousel = () => {
     }, []);
 
     const itemTemplate = (item) => {
-        return <img src={item.itemImageSrc} alt={item.alt} style={{ width: '100%', display: 'block' }} />;
+        return <img src={item.itemImageSrc} alt={item.alt} style={{width: '100%', display: 'block'}}/>;
     }
 
     return (
         <>
-            <Galleria ref={galleria} value={images} showThumbnails={false} numVisible={9} style={{ maxWidth: '50%' }}
+            <Galleria ref={galleria} value={images} showThumbnails={false} numVisible={9} style={{maxWidth: '800px'}}
                       circular fullScreen showItemNavigators item={itemTemplate}/>
             <div className="lg:bg-bgspecial1 bg-phone bg-no-repeat bg-cover h-screen">
                 <header className="bg-transparent text-white p-4 flex justify-between items-center">
@@ -102,7 +102,7 @@ const Carousel = () => {
                     </div>
                 </header>
                 <div className="w-full mt-20 flex items-center flex-wrap">
-                    <div className="lg:w-2/5 w-full lg:order-2 md:order-2">
+                    <div className="lg:w-2/6 w-full lg:order-2 md:order-2">
                         <div className="flex items-center h-96 relative">
                             {cars.map((img, i) => (
                                 <img
@@ -117,13 +117,16 @@ const Carousel = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="lg:w-3/5 text-white lg:order-1 md:order-1">
-                        <div className="flex flex-col items-center">
+                    <div className="lg:w-3/6 w-full text-white lg:order-1 md:order-1 items-center ">
+                        <div className="flex flex-col items-center justify-center">
                             <h1 className="lg:text-5xl text-2xl mt-20">
                                 {texts[index].title}
                             </h1>
-                            <p className="lg:text-xl mt-6 ml-4">
+                            <p className="lg:text-xl mt-6">
                                 Închiriază la numărul de telefon: {texts[index].phoneNumber}
+                            </p>
+                            <p className="lg:text-xl mt-6 cursor-pointer underline"  onClick={() => galleria.current.show()}>
+                                Click pentru mai multe fotografii
                             </p>
                             <Button icon="pi pi-chevron-right"
                                     className="p-button-rounded p-button-text text-white"

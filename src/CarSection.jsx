@@ -14,7 +14,7 @@ export const CarSection = ({computedPrice, shownCars}) => {
                         shownCars.includes(1) ?
                             <div className="flex relative sm:w-4/5 lg:w-2/5 mb-20 h-40 bg-white p-6 rounded-full">
                                 <div className="w-2/5">
-                                    <img src="/images/ss2-removebg-preview.png" alt=""
+                                    <img src="/images/preview-car2.png" alt=""
                                          className="lg:w-2/5 lg:absolute left-2.5 bottom-1"
                                          width="300px"/>
                                 </div>
@@ -40,7 +40,7 @@ export const CarSection = ({computedPrice, shownCars}) => {
                         shownCars.includes(2) ?
                             <div className="flex relative sm:w-4/5 lg:w-2/5 mb-20 h-40 bg-white p-6 rounded-full">
                                 <div className="w-2/5">
-                                    <img src="/images/ss-removebg-preview.png" alt=""
+                                    <img src="/images/preview-car1.png" alt=""
                                          className="lg:w-2/5 lg:absolute left-2.5 bottom-1"
                                          width="300px"/>
                                 </div>

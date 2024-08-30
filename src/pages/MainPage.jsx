@@ -1,10 +1,10 @@
 import React, {useRef, useState} from "react"
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
-import {CarSection} from "../CarSection";
-import Header from "../Header";
 import {Toast} from "primereact/toast";
-import {MainForm} from "../MainForm";
+import Header from "../components/Header";
+import {MainForm} from "../components/MainForm";
+import {CarSection} from "../components/CarSection";
 
 export const MainPage = () => {
     const toast = useRef(null);
@@ -43,7 +43,7 @@ export const MainPage = () => {
                     />
                 </div>
             </div>
-            <div ref={commentSectionRef} className="w-full h-2/5 bg-myblue pt-20">
+            <div ref={commentSectionRef}>
                 <CarSection computedPrice={computedPrice} shownCars={shownCars}/>
             </div>
         </>

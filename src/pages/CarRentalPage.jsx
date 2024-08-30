@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
-import ImageComponent from "../ImageComponent";
-import CarRentalForm from "../CarRentalForm";
 import {useParams} from "react-router-dom";
+import ImageComponent from "../components/ImageComponent";
+import CarRentalForm from "../components/CarRentalForm";
 
 const CarRentalPage = () => {
     useEffect(() => {

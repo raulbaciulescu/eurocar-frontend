@@ -4,8 +4,8 @@ const headers = {
     'Content-Type': 'application/json',
 }
 
-const URL = "http://localhost:8080";
-// const URL = "https://eurocargmn-6d6f50172cea.herokuapp.com";
+//const URL = "http://localhost:8080";
+const URL = "https://eurocargmn-6d6f50172cea.herokuapp.com";
 
 
 const axiosUnauthorizedInstance = axios.create({

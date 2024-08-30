@@ -1,23 +1,23 @@
 import "primereact/resources/themes/bootstrap4-light-blue/theme.css";
-import Header from "./Header";
 import {HashRouter, Navigate, Route, Routes} from "react-router-dom";
 import {MainPage} from "./pages/MainPage";
-import {Footer} from "./Footer";
 import CarRentalPage from "./pages/CarRentalPage";
-import {AppProvider} from "./appProvider";
 import AdminCalendarPage from "./pages/AdminCalendarPage";
 import AdminTablePage from "./pages/AdminTablePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import {useState} from "react";
 import {Helmet} from "react-helmet";
 import SpecialCarsPage from "./pages/SpecialCarsPage";
+import Header from "./components/Header";
+import {Footer} from "./components/Footer";
+import {AppProvider} from "./providers/appProvider";
 
 function App() {
     return (
         <>
             <Helmet>
-                <meta name="description" content="Inchiriaza un minibus/duba/masina 8 locuri"/>
+                <meta name="description"
+                      content="Inchiriere microbuz/minibus/duba/masina 8+1 locuri Targu Mures, Sighisoara, Cluj-Napoca, Bistrita, Brasov, Sibiu"/>
             </Helmet>
             <AppProvider>
                 <HashRouter>

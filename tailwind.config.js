@@ -10,9 +10,9 @@ module.exports = {
                 'specialcars': '#0E2E3D',
             },
             backgroundImage: {
-                'mybg': "url('D:\\Projects\\eurocar-frontend2\\public\\images\\background.PNG')",
-                'bgspecial1': "url('D:\\Projects\\eurocar-frontend2\\public\\images\\background-special.png')",
-                'phone': "url('D:\\Projects\\eurocar-frontend2\\public\\images\\background-special-phone.JPG')",
+                'mybg': "url('D:\\Projects\\eurocar-frontend\\public\\images\\background.PNG')",
+                'bgspecial1': "url('D:\\Projects\\eurocar-frontend\\public\\images\\background-special.png')",
+                'phone': "url('D:\\Projects\\eurocar-frontend\\public\\images\\background-special-phone.JPG')",
             }
         },
     },

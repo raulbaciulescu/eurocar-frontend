@@ -99,7 +99,7 @@ const SpecialCarsPage = () => {
                     </div>
                     <div className="lg:w-3/6 w-full text-white lg:order-1 md:order-1 items-center ">
                         <div className="flex flex-col items-center justify-center">
-                            <h1 className="lg:text-5xl text-2xl mt-20">
+                            <h1 className="lg:text-5xl text-2xl">
                                 {texts[index].title}
                             </h1>
                             <p className="lg:text-xl mt-6">
